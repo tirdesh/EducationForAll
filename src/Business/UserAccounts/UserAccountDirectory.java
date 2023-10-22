@@ -61,6 +61,10 @@ public class UserAccountDirectory {
      
      public ArrayList<UserAccount> getUserAccountList()
      {
+         for (UserAccount ua: useraccountlist){
+                      System.out.println(ua);
+
+         }
          return useraccountlist;
      }
      

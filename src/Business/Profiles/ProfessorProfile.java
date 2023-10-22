@@ -6,24 +6,32 @@
 package Business.Profiles;
 
 import Business.Person.Person;
+import Business.CourseWork.Course;
 
-/**
- *
- * @author kal bugrara
- */
+import java.util.ArrayList;
+
 public class ProfessorProfile extends Profile {
-
-
+    private ArrayList<Course> courseList;
 
     public ProfessorProfile(Person p) {
-
-        super(p); 
-
+        super(p);
+        courseList = new ArrayList<>();
     }
-    
+
     @Override
-    public String getRole(){
-        return  "Professor";
+    public String getRole() {
+        return "Professor";
     }
 
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void addCourseToProfile(Course course) {
+        courseList.add(course);
+    }
+
+    public void removeCourseFromProfile(Course course) {
+        courseList.remove(course);
+    }
 }

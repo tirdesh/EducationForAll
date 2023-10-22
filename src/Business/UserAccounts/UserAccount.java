@@ -92,7 +92,12 @@ public class UserAccount {
     @Override
         public String toString(){
             
-            return getUserLoginName();
+            //return getUserLoginName();
+            return "UserAccount{" +
+           "profile=" + profile +
+           ", username='" + username + '\'' +
+           ", passwordHashes=" + passwordHashes +
+           '}';
         }
         
 }

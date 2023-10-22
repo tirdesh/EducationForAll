@@ -210,7 +210,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         p.setLast_name(txtLastName.getText());
         p.setEmail(txtEmail.getText());
         Profile profile; // Declare the profile variable
-        if(jRadioButtonStudent.isEnabled()){
+        if(jRadioButtonStudent.isSelected()){
             profile = business.getStudentDirectory().newStudentProfile(p);
         }
         else{
