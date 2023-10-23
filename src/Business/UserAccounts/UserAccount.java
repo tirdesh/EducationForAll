@@ -50,8 +50,7 @@ public class UserAccount {
     }
         public boolean IsValidUser(String un, String pw){
         
-            if (username.equalsIgnoreCase(un) && checkPassword(pw)) return true;
-            else return false;
+        return username.equalsIgnoreCase(un) && checkPassword(pw);
         
         }
         public String getRole(){
