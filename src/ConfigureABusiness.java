@@ -9,20 +9,11 @@
 package Business;
 
 import Business.AcademicCalendar.AcademicCalendar;
-import Business.CourseWork.Course;
-import Business.CourseWork.CourseCatalog;
-import Business.Person.Person;
-import Business.Person.PersonDirectory;
-import Business.Profiles.ProfessorDirectory;
-import Business.Profiles.ProfessorProfile;
-import Business.Profiles.StudentDirectory;
-import Business.Profiles.StudentProfile;
-
-import Business.UserAccounts.UserAccount;
-import Business.UserAccounts.UserAccountDirectory;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import Business.CourseWork.*;
+import Business.Person.*;
+import Business.Profiles.*;
+import Business.UserAccounts.*;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -76,14 +67,16 @@ class ConfigureABusiness {
         course1.setCourseDuration("Fall", 2023, academicCalendar);
         course1.setSessionType("Live");
         course1.createLiveClassSchedule("Fall", 2023, academicCalendar, LocalTime.of(9, 0), Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.FRIDAY));
-
+        pp.addCourseToProfile(course1);
+        
         // Course 2: On-Demand Course
         Course course2 = coursecatalog.newCourse("Web Development", "Build web applications", new ArrayList<>(), 4);
         course2.setTermBased(false);
         course2.setCourseDuration(LocalDate.of(2023, 8, 1), LocalDate.of(2023, 12, 31));
         course2.setSessionType("Recorded");
         course2.createOnDemandClassSchedule(LocalDate.of(2023, 8, 1), LocalDate.of(2023, 12, 31), LocalTime.of(10, 0), Arrays.asList(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY));
-
+        pp.addCourseToProfile(course2);
+        
         // Course 3: Another Term-Based Course
         Course course3 = coursecatalog.newCourse("Database Management", "Learn about databases", new ArrayList<>(), 3);
         course3.setTermBased(true);
@@ -91,10 +84,29 @@ class ConfigureABusiness {
         course3.setSessionType("Live");
         course3.createLiveClassSchedule("Spring", 2024, academicCalendar, LocalTime.of(11, 0), Arrays.asList(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY));
         
-        System.out.println(coursecatalog);
-        System.out.println(uadirectory);
-        System.out.println(coursecatalog);
-        System.out.println(coursecatalog);
+        // Create Tech Stack objects
+        TechStack techStack1 = new TechStack(
+            Arrays.asList("Java", "Python"),  // Programming Languages
+            Arrays.asList("Spring", "React"),  // Frameworks
+            Arrays.asList("Eclipse", "Git")   // Tools
+        );
+
+        TechStack techStack2 = new TechStack(
+            Arrays.asList("JavaScript", "HTML"),  // Programming Languages
+            Arrays.asList("Angular", "Node.js"), // Frameworks
+            Arrays.asList("Visual Studio Code", "Git") // Tools
+        );
+
+        TechStack techStack3 = new TechStack(
+            Arrays.asList("SQL", "Python"),  // Programming Languages
+            Arrays.asList("MySQL", "MongoDB"),  // Frameworks
+            Arrays.asList("SQL Server Management Studio", "Git") // Tools
+        );
+
+        // Set the Tech Stack for the courses
+        course1.setTechStack(techStack1);
+        course2.setTechStack(techStack2);
+        course3.setTechStack(techStack3);
         
         return business;
         

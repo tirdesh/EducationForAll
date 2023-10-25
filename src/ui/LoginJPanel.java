@@ -60,11 +60,14 @@ public class LoginJPanel extends javax.swing.JPanel {
 
         lblPassword.setText("Password:");
 
+        txtUsername.setText("professor");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
+
+        jPasswordField1.setText("professor");
 
         lblSignUp.setText("To create an account");
 

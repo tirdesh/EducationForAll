@@ -16,9 +16,15 @@ import java.util.List;
 
 public class Schedule {
     private List<Session> sessions;
+    private List<DayOfWeek> daysOfWeek;
 
     public Schedule() {
         this.sessions = new ArrayList<>();
+        this.daysOfWeek = null;
+    }
+
+    public List<DayOfWeek> getDaysOfWeek() {
+        return daysOfWeek;
     }
     
     private List<LocalDate> calculateDaysInRange(LocalDate startDate, LocalDate endDate, List<DayOfWeek> daysOfWeek) {
@@ -32,6 +38,7 @@ public class Schedule {
     }
 
     public void generateSessions(int courseHours, LocalTime startTime, List<DayOfWeek> daysOfWeek, LocalDate startDate, LocalDate endDate) {
+        this.daysOfWeek = daysOfWeek;
         List<LocalDate> daysInRange = calculateDaysInRange(startDate, endDate, daysOfWeek);
 
         if (daysInRange.isEmpty()) {

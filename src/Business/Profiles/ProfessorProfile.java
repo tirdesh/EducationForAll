@@ -34,4 +34,14 @@ public class ProfessorProfile extends Profile {
     public void removeCourseFromProfile(Course course) {
         courseList.remove(course);
     }
+    
+    public Course findCourse(String courseName) {
+        for (Course course : courseList) {
+            if (course.getCourseName().equals(courseName)) {
+                return course;
+            }
+        }
+        return null; // Not found after going through the whole list
+    }
+    
 }
