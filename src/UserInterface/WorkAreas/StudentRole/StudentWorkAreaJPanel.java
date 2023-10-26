@@ -13,6 +13,7 @@ package UserInterface.WorkAreas.StudentRole;
 import Business.Business;
 import Business.Profiles.StudentProfile;
 import javax.swing.JPanel;
+import ui.ManageProfileJPanel;
 
 /**
  *
@@ -187,7 +188,14 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+         ManageProfileJPanel panel = new ManageProfileJPanel(business, CardSequencePanel,student);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("ManageProfileJPanel", panel);
 
+//        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
+        // aos.setAgenda(businessunit.getRiskManagementAgenda());
+//        CardSequencePanel.add("ManageVulns", aos);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
 //        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
         // aos.setAgenda(businessunit.getRiskManagementAgenda());

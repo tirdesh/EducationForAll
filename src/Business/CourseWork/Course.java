@@ -4,6 +4,7 @@ import Business.AcademicCalendar.AcademicCalendar;
 import Business.AcademicCalendar.TermDates;
 import Business.CourseScheduler.Schedule;
 import Business.Profiles.ProfessorProfile;
+import Business.Profiles.StudentProfile;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -31,6 +32,24 @@ public class Course {
     private TechStack techStack;
     private ProfessorProfile professorProfile;
 
+    private ArrayList<StudentProfile> registeredStudents;
+
+    public ArrayList<StudentProfile> getRegisteredStudents() {
+        return registeredStudents;
+    }
+    
+    public void addStudent(StudentProfile student) {
+        this.registeredStudents.add(student);
+    }
+      private String Courseprogress;
+
+    public String getCourseprogress() {
+        return Courseprogress;
+    }
+
+    public void setCourseprogress(String Courseprogress) {
+        this.Courseprogress = Courseprogress;
+    }
     public Course(String courseName, String description, ArrayList<Course> prerequisites, int courseHours) {
         // Constructor to initialize basic attributes
         this.courseName = courseName;
