@@ -76,6 +76,7 @@ class ConfigureABusiness {
         course2.setCourseDuration(LocalDate.of(2023, 8, 1), LocalDate.of(2023, 12, 31));
         course2.setSessionType("Recorded");
         course2.createOnDemandClassSchedule(LocalDate.of(2023, 8, 1), LocalDate.of(2023, 12, 31), LocalTime.of(10, 0), Arrays.asList(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY));
+        course2.getPrerequisites().add(course1);
         pp.addCourseToProfile(course2);
         
         // Course 3: Another Term-Based Course

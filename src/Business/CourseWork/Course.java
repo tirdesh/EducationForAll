@@ -57,6 +57,8 @@ public class Course {
         this.description = description;
         this.prerequisites = prerequisites;
         this.schedule = new Schedule();
+        this.techStack = new TechStack(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        this.registeredStudents = new ArrayList<>();
     }
 
     // Getter and Setter methods for all attributes
@@ -118,6 +120,7 @@ public class Course {
     }
 
     public void setCourseDuration(String term, int termYear, AcademicCalendar academicCalendar) {
+        this.termBased = true;
         this.term = term;
         this.termYear = termYear;
         TermDates termDates = academicCalendar.getTermDates(term, termYear);

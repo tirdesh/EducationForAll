@@ -36,9 +36,18 @@ public class Business {
         useraccountdirectory = new UserAccountDirectory();
         coursecatalog = new CourseCatalog();
         academicCalendar = new AcademicCalendar();
-        academicCalendar.addTermDates("Fall", 2023, LocalDate.of(2023, 9, 1), LocalDate.of(2023, 12, 15));
-        academicCalendar.addTermDates("Spring", 2024, LocalDate.of(2024, 1, 15), LocalDate.of(2024, 5, 30));
+        // Assuming academicCalendar is an instance of your AcademicCalendar class
 
+        int startYear = 2023; // Starting year
+        int endYear = startYear + 6; // Ending year (5 years into the future)
+        for (int year = startYear; year <= endYear; year++) {
+            // Generate term dates for each year
+            academicCalendar.addTermDates("Fall", year, LocalDate.of(year, 9, 1), LocalDate.of(year, 12, 15));
+            academicCalendar.addTermDates("Spring", year + 1, LocalDate.of(year, 1, 15), LocalDate.of(year, 5, 30));
+            academicCalendar.addTermDates("Summer", year + 1, LocalDate.of(year, 6, 1), LocalDate.of(year, 8, 15));
+            academicCalendar.addTermDates("Winter", year + 1, LocalDate.of(year, 12, 1), LocalDate.of(year, 1, 15).plusYears(1));
+            // You can add more terms if needed
+        }
     }
 
     public PersonDirectory getPersonDirectory() {

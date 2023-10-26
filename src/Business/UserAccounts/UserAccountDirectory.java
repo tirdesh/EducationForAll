@@ -56,6 +56,7 @@ public class UserAccountDirectory {
     public UserAccount authenticate(String username, String password) {
         for (UserAccount ua : useraccountlist) {
             if (ua.getUserLoginName().equals(username) && ua.checkPassword(password)) {
+                this.actualuser = ua;
                 return ua;
             }
         }
