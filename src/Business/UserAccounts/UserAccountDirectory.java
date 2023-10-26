@@ -16,7 +16,11 @@ import java.util.ArrayList;
 public class UserAccountDirectory {
     
       ArrayList<UserAccount> useraccountlist ;
-    
+      UserAccount actualuser;
+
+    public UserAccount getActualuser() {
+        return actualuser;
+    }
       public UserAccountDirectory (){
           
        useraccountlist = new ArrayList();
