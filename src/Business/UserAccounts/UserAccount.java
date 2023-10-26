@@ -61,6 +61,10 @@ public class UserAccount {
             return profile;
         }
         
+        public String getPasswordHashes() {
+        return passwordHashes.get(0);
+    }
+
         public boolean checkPassword(String password) {
         if (!passwordHashes.isEmpty()) {
             String latestPasswordHash = passwordHashes.get(0);
