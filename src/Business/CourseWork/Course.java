@@ -137,6 +137,9 @@ public class Course {
 
     public void createLiveClassSchedule(String term, int termYear, AcademicCalendar academicCalendar, LocalTime startTime, List<DayOfWeek> daysOfWeek) {
         // Set course duration based on academic calendar (or start and end dates)
+        System.out.println(term);
+        System.out.println(termYear);
+        
         setCourseDuration(term, termYear, academicCalendar);
 
         // Set the session type

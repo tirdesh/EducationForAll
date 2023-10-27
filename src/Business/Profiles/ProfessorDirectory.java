@@ -39,6 +39,10 @@ public class ProfessorDirectory {
         }
     }
 
+    public ArrayList<ProfessorProfile> getProfessorlist() {
+        return professorlist;
+    }
+
     public ProfessorProfile findProfessor(int id) {
 
         for (ProfessorProfile sp : professorlist) {

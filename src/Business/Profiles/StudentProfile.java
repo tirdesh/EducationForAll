@@ -5,7 +5,9 @@
  */
 package Business.Profiles;
 
+import Business.CourseWork.Course;
 import Business.Person.Person;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,11 +16,14 @@ import Business.Person.Person;
 public class StudentProfile extends Profile {
 
     Person person;
+    private ArrayList<Course> courseList;
+
     //    Transcript transcript;
     //   EmploymentHistroy employmenthistory;
 
     public StudentProfile(Person p) {
         super(p);
+        courseList = new ArrayList<>();
 
 //        transcript = new Transcript(this);
 //        employmenthistory = new EmploymentHistroy();
@@ -28,7 +33,30 @@ public class StudentProfile extends Profile {
     public String getRole() {
         return "Student";
     }
+    
+    
 
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void addCourseToProfile(Course course) {
+        courseList.add(course);
+    }
+
+    public void removeCourseFromProfile(Course course) {
+        courseList.remove(course);
+    }
+    
+    public Course findCourse(String courseName) {
+        for (Course course : courseList) {
+            if (course.getCourseName().equals(courseName)) {
+                return course;
+            }
+        }
+        return null; // Not found after going through the whole list
+    }
+    
     public boolean isMatch(int id) {
         return person.getPersonId() == id;
     }
