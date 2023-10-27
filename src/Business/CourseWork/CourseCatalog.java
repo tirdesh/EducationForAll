@@ -39,4 +39,21 @@ public class CourseCatalog {
         }
         return null; // Not found after going through the whole list
     }
+    
+    public ArrayList<Course> getCoursesByTermAndYear(String termAndYear) {
+    ArrayList<Course> coursesByTermAndYear = new ArrayList<>();
+
+    for (Course course : courseList) {
+        if (course.isTermBased()) {
+            String courseTermAndYear = course.getTerm() + " " + course.getTermYear();
+            if (courseTermAndYear.equals(termAndYear)) {
+                coursesByTermAndYear.add(course);
+            }
+        }
+    }
+
+    return coursesByTermAndYear;
+}
+
+    
 }
