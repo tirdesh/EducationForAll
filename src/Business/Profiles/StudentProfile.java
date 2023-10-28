@@ -8,6 +8,8 @@ package Business.Profiles;
 import Business.CourseWork.Course;
 import Business.Person.Person;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -17,6 +19,7 @@ public class StudentProfile extends Profile {
 
     Person person;
     private ArrayList<Course> courseList;
+    private Map<Course, Integer> courseProgressMap = new HashMap<>();
 
     //    Transcript transcript;
     //   EmploymentHistroy employmenthistory;
@@ -33,8 +36,6 @@ public class StudentProfile extends Profile {
     public String getRole() {
         return "Student";
     }
-    
-    
 
     public ArrayList<Course> getCourseList() {
         return courseList;
@@ -42,10 +43,13 @@ public class StudentProfile extends Profile {
 
     public void addCourseToProfile(Course course) {
         courseList.add(course);
+        updateCourseProgress(course, 0);
     }
 
     public void removeCourseFromProfile(Course course) {
         courseList.remove(course);
+        courseProgressMap.remove(course); // Remove the grade when removing the course
+
     }
     
     public Course findCourse(String courseName) {
@@ -55,6 +59,18 @@ public class StudentProfile extends Profile {
             }
         }
         return null; // Not found after going through the whole list
+    }
+    
+    public void updateCourseProgress(Course course, int progress) {
+        if (progress >= 0 && progress <= 100) {
+            courseProgressMap.put(course, progress);
+        } else {
+            // Handle invalid progress value...
+        }
+    }
+
+    public Integer getCourseProgress(Course course) {
+        return courseProgressMap.get(course);
     }
     
     public boolean isMatch(int id) {

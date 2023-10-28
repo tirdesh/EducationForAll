@@ -5,6 +5,7 @@ import Business.AcademicCalendar.TermDates;
 import Business.CourseScheduler.Schedule;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.StudentProfile;
+import Business.Ratings.RatingSystem;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -31,25 +32,12 @@ public class Course {
     private Schedule schedule;
     private TechStack techStack;
     private ProfessorProfile professorProfile;
-
     private ArrayList<StudentProfile> registeredStudents;
+    private RatingSystem ratingSystem;
 
-    public ArrayList<StudentProfile> getRegisteredStudents() {
-        return registeredStudents;
-    }
+
     
-    public void addStudent(StudentProfile student) {
-        this.registeredStudents.add(student);
-    }
-      private String Courseprogress;
 
-    public String getCourseprogress() {
-        return Courseprogress;
-    }
-
-    public void setCourseprogress(String Courseprogress) {
-        this.Courseprogress = Courseprogress;
-    }
     public Course(String courseName, String description, ArrayList<Course> prerequisites, int courseHours) {
         // Constructor to initialize basic attributes
         this.courseName = courseName;
@@ -59,10 +47,15 @@ public class Course {
         this.schedule = new Schedule();
         this.techStack = new TechStack(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         this.registeredStudents = new ArrayList<>();
+        this.ratingSystem = new RatingSystem();
+    }
+
+    public RatingSystem getRatingSystem() {
+        return ratingSystem;
     }
 
     // Getter and Setter methods for all attributes
-
+    
     public void setProfessorProfile(ProfessorProfile professorProfile) {
         this.professorProfile = professorProfile;
     }
@@ -207,4 +200,22 @@ public class Course {
     public String getSessionType() {
         return sessionType;
     }
+    
+    public ArrayList<StudentProfile> getRegisteredStudents() {
+        return registeredStudents;
+    }
+    
+    public void addStudent(StudentProfile student) {
+        this.registeredStudents.add(student);
+    }
+      private String Courseprogress;
+
+    public String getCourseprogress() {
+        return Courseprogress;
+    }
+
+    public void setCourseprogress(String Courseprogress) {
+        this.Courseprogress = Courseprogress;
+    }
+    
 }

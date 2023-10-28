@@ -7,20 +7,27 @@ package Business.Profiles;
 
 import Business.Person.Person;
 import Business.CourseWork.Course;
+import Business.Ratings.RatingSystem;
 
 import java.util.ArrayList;
 
 public class ProfessorProfile extends Profile {
     private ArrayList<Course> courseList;
+    private RatingSystem ratingSystem;
 
     public ProfessorProfile(Person p) {
         super(p);
         courseList = new ArrayList<>();
+        this.ratingSystem = new RatingSystem();
     }
 
     @Override
     public String getRole() {
         return "Professor";
+    }
+
+    public RatingSystem getRatingSystem() {
+        return ratingSystem;
     }
 
     public ArrayList<Course> getCourseList() {
@@ -43,5 +50,5 @@ public class ProfessorProfile extends Profile {
         }
         return null; // Not found after going through the whole list
     }
-    
+        
 }
