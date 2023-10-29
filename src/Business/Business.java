@@ -7,7 +7,9 @@ package Business;
 
 import Business.AcademicCalendar.AcademicCalendar;
 import Business.CourseWork.CourseCatalog;
+import Business.Employment.JobCatalog;
 import Business.Person.PersonDirectory;
+import Business.Profiles.EmployerDirectory;
 import Business.Profiles.ProfessorDirectory;
 import Business.Profiles.StudentDirectory;
 
@@ -24,17 +26,21 @@ public class Business {
     PersonDirectory persondirectory; //all people profiles regardless of the role
     StudentDirectory studentdirectory;
     ProfessorDirectory professordirectory;
+    EmployerDirectory employerdirectory;
     UserAccountDirectory useraccountdirectory;
     CourseCatalog coursecatalog;
+    JobCatalog jobcatalog;
     AcademicCalendar academicCalendar;
 
     public Business(String n) {
         name = n;
         persondirectory = new PersonDirectory();
         studentdirectory = new StudentDirectory();
+        employerdirectory = new EmployerDirectory(this);
         professordirectory = new ProfessorDirectory(this);
         useraccountdirectory = new UserAccountDirectory();
         coursecatalog = new CourseCatalog();
+        jobcatalog = new JobCatalog();
         academicCalendar = new AcademicCalendar();
         // Assuming academicCalendar is an instance of your AcademicCalendar class
 
@@ -58,6 +64,10 @@ public class Business {
         return useraccountdirectory;
     }
 
+    public JobCatalog getJobCatalog() {
+        return jobcatalog;
+    }
+
 
     public ProfessorDirectory getProfessorDirectory() {
         return professordirectory;
@@ -73,6 +83,10 @@ public class Business {
 
     public AcademicCalendar getAcademicCalendar() {
         return academicCalendar;
+    }
+
+    public EmployerDirectory getEmployerDirectory() {
+        return employerdirectory;
     }
 
 }

@@ -5,11 +5,13 @@
 package ui;
 
 import Business.Business;
+import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
 import Business.UserAccounts.UserAccount;
 import Business.UserAccounts.UserAccountDirectory;
+import UserInterface.WorkAreas.EmployerRole.EmployerWorkAreaJPanel;
 import UserInterface.WorkAreas.ProfessorRole.ProfessorWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import javax.swing.JPanel;
@@ -155,7 +157,12 @@ public class LoginJPanel extends javax.swing.JPanel {
                 ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
                 // Handle the case for professors
                 // Add your code to navigate to the professor panel
-            } else {
+            } else if (role.equalsIgnoreCase("Employer")){
+                EmployerProfile employerProfile = (EmployerProfile) profile;
+                EmployerWorkAreaJPanel employerWorkAreaJPanel = new EmployerWorkAreaJPanel(business, employerProfile, CardSequencePanel);
+                CardSequencePanel.removeAll();
+                CardSequencePanel.add("employer", employerWorkAreaJPanel);
+                ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
                 // Handle other roles or scenarios
             }
         } else {

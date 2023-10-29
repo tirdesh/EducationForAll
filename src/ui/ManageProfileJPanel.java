@@ -5,6 +5,7 @@
 package ui;
 
 import Business.Business;
+import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.StudentProfile;
 import Business.UserAccounts.UserAccount;
@@ -23,6 +24,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
      */
     StudentProfile spp;
     ProfessorProfile pp;
+    EmployerProfile ep;
     Business business;
     UserAccount actualuser;
     JPanel CardSequencePanel;
@@ -46,6 +48,20 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         actualuser=business.getUserAccountDirectory().getActualuser();
         txtFirstName.setText(actualuser.getAssociatedPersonProfile().getPerson().getFirst_name());
         txtLastName.setText(actualuser.getAssociatedPersonProfile().getPerson().getLast_name());
+        txtEmail.setText(actualuser.getAssociatedPersonProfile().getPerson().getEmail());
+        txtUserName.setText(actualuser.getUserLoginName());
+        jPasswordField1.setText(actualuser.getPasswordHashes());
+    }
+    public ManageProfileJPanel(Business business, JPanel CardSequencePanel, EmployerProfile ep) {
+        initComponents();
+        this.CardSequencePanel=CardSequencePanel;
+        this.business=business;
+        this.ep=ep;
+        actualuser=business.getUserAccountDirectory().getActualuser();
+        lblFirstName.setText("Company");
+        lblLastName.setText("Industry");
+        txtFirstName.setText(ep.getCompanyName());
+        txtLastName.setText(ep.getIndustry());
         txtEmail.setText(actualuser.getAssociatedPersonProfile().getPerson().getEmail());
         txtUserName.setText(actualuser.getUserLoginName());
         jPasswordField1.setText(actualuser.getPasswordHashes());
