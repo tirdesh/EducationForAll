@@ -36,8 +36,8 @@ public class PersonDirectory {
         // Check if the deleted person's ID is the highest so far
         if (deletedId == Person.getIdCounter()) {
             Person.decrementIdCounter();
+            }
         }
-    }
     }
 
     public Person findPerson(int id) {

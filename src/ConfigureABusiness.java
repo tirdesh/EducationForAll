@@ -10,6 +10,8 @@ package Business;
 
 import Business.AcademicCalendar.AcademicCalendar;
 import Business.CourseWork.*;
+import Business.Employment.Job;
+import Business.Employment.JobCatalog;
 import Business.Person.*;
 import Business.Profiles.*;
 import Business.UserAccounts.*;
@@ -40,7 +42,7 @@ class ConfigureABusiness {
         ProfessorDirectory professordirectory = business.getProfessorDirectory();
         //ProfessorProfile employeeprofile0 = employeedirectory.newProfessorProfile(xeroxadminperson001);
 
-
+        EmployerDirectory employerdirectory = business.getEmployerDirectory();
    
 // Create User accounts that link to specific profiles
         UserAccountDirectory uadirectory = business.getUserAccountDirectory();
@@ -49,6 +51,7 @@ class ConfigureABusiness {
 
         StudentDirectory studentdirectory = business.getStudentDirectory();
         CourseCatalog coursecatalog = business.getCourseCatalog();
+        JobCatalog jobcatalog = business.getJobCatalog();
         AcademicCalendar academicCalendar = business.getAcademicCalendar();
         
         Person s = persondirectory.newPerson();
@@ -91,7 +94,14 @@ class ConfigureABusiness {
             // Create UserAccount for each professor
             uadirectory.newUserAccount(professorProfile, "professor"+i, "professor"+i);
         }
-
+        
+        
+        Person e = persondirectory.newPerson();
+//        p.setFirst_name("emp");
+//        p.setLast_name("loyer");
+        e.setEmail("employer@gmail.com");
+        EmployerProfile ep = employerdirectory.newEmployerProfile(e, "Top Company", "Best Industry");
+        uadirectory.newUserAccount(ep, "employer", "employer");
         
         // Course 1: Term-Based Course
         Course course1 = coursecatalog.newCourse("Introduction to Programming", "Learn the basics of programming", new ArrayList<>(), 3);
@@ -117,9 +127,46 @@ class ConfigureABusiness {
         course3.setSessionType("Live");
         course3.createLiveClassSchedule("Spring", 2024, academicCalendar, LocalTime.of(11, 0), Arrays.asList(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY));
         
-  
         
-                // Create lists for course titles and descriptions
+        
+        Job job1 = jobcatalog.newJob("Software Engineer", "Develop software applications", "San Francisco, CA");
+        job1.setEmployerProfile(ep);
+        ep.addJobOpening(job1);
+        Job job2 = jobcatalog.newJob("Web Developer", "Build websites and web applications", "New York, NY");
+        job2.setEmployerProfile(ep);
+        job2.getRelevantCourses().add(course2);
+        ep.addJobOpening(job2);
+        Job job3 = jobcatalog.newJob("Data Analyst", "Analyze and interpret data", "Chicago, IL");
+
+          // Create Tech Stack objects
+        TechStack techStack1 = new TechStack(
+            Arrays.asList("Java", "Python"),  // Programming Languages
+            Arrays.asList("Spring", "React"),  // Frameworks
+            Arrays.asList("Eclipse", "Git")   // Tools
+        );
+
+        TechStack techStack2 = new TechStack(
+            Arrays.asList("JavaScript", "HTML"),  // Programming Languages
+            Arrays.asList("Angular", "Node.js"), // Frameworks
+            Arrays.asList("Visual Studio Code", "Git") // Tools
+        );
+
+        TechStack techStack3 = new TechStack(
+            Arrays.asList("SQL", "Python"),  // Programming Languages
+            Arrays.asList("MySQL", "MongoDB"),  // Frameworks
+            Arrays.asList("SQL Server Management Studio", "Git") // Tools
+        );
+
+        // Set the Tech Stack for the courses
+        course1.setTechStack(techStack1);
+        course2.setTechStack(techStack2);
+        course3.setTechStack(techStack3);
+        
+        job1.setTechStack(techStack1);
+        job2.setTechStack(techStack2);
+        job3.setTechStack(techStack3);
+        
+        // Create lists for course titles and descriptions
         ArrayList<String> courseTitles = new ArrayList<>();
         ArrayList<String> courseDescriptions = new ArrayList<>();
         ArrayList<Integer> courseHours = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
@@ -232,31 +279,6 @@ class ConfigureABusiness {
             professorProfile.addCourseToProfile(newCourse);
         }
 
-        
-        
-        // Create Tech Stack objects
-        TechStack techStack1 = new TechStack(
-            Arrays.asList("Java", "Python"),  // Programming Languages
-            Arrays.asList("Spring", "React"),  // Frameworks
-            Arrays.asList("Eclipse", "Git")   // Tools
-        );
-
-        TechStack techStack2 = new TechStack(
-            Arrays.asList("JavaScript", "HTML"),  // Programming Languages
-            Arrays.asList("Angular", "Node.js"), // Frameworks
-            Arrays.asList("Visual Studio Code", "Git") // Tools
-        );
-
-        TechStack techStack3 = new TechStack(
-            Arrays.asList("SQL", "Python"),  // Programming Languages
-            Arrays.asList("MySQL", "MongoDB"),  // Frameworks
-            Arrays.asList("SQL Server Management Studio", "Git") // Tools
-        );
-
-        // Set the Tech Stack for the courses
-        course1.setTechStack(techStack1);
-        course2.setTechStack(techStack2);
-        course3.setTechStack(techStack3);
         
                 // Set a random tech stack for existing courses in the course catalog
         for (Course course : coursecatalog.getCourseList()) {
