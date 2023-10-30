@@ -17,6 +17,7 @@ public class UserAccount {
     Profile profile;
     String username;
     private final ArrayList<String> passwordHashes = new ArrayList<>();
+    private final ArrayList<String> passwordUnHashed = new ArrayList<>();
 
     
     public UserAccount (Profile profile, String un, String pw){
@@ -88,7 +89,12 @@ public class UserAccount {
             
             // Add the new hashed password at the beginning of the list (index 0)
             passwordHashes.add(0, hashedPassword);
+            passwordUnHashed.add(0, newPassword);
         }
+    }
+    
+    public String getPassword(){
+        return passwordUnHashed.get(0);
     }
     
     

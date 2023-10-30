@@ -20,10 +20,7 @@ import javax.swing.JPanel;
 import ui.LoginJPanel;
 import ui.ManageProfileJPanel;
 
-/**
- *
- * @author kal
- */
+
 public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;

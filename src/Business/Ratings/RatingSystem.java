@@ -4,10 +4,12 @@
  */
 package Business.Ratings;
 
+import Business.Profiles.EmployerProfile;
 import java.util.ArrayList;
 import java.util.List;
 import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
+import java.text.DecimalFormat;
 // import Business.Profiles.EmployeeProfile;
 
 
@@ -25,9 +27,9 @@ public class RatingSystem {
         if (profile instanceof StudentProfile) {
             studentRatings.add(rating);
         } 
-//        else if (profile instanceof EmployeeProfile) {
-//            employerRatings.add(rating);
-//        }
+        else if (profile instanceof EmployerProfile) {
+            employerRatings.add(rating);
+        }
     }
 
     public double getAverageStudentRating() {
@@ -53,7 +55,9 @@ public class RatingSystem {
         for (Double rating : ratings) {
             totalRating += rating;
         }
-
-        return totalRating / ratings.size();
+        double frating = totalRating / ratings.size();
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        String formattedRating = decimalFormat.format(frating);
+        return Double.parseDouble(formattedRating);
     }
 }

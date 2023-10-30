@@ -49,7 +49,22 @@ public class CourseCatalog {
     }
 
     return coursesByTermAndYear;
-}
+    }
+
+    public Course findCourseWithMaxStudents() {
+        Course courseWithMaxStudents = null;
+        int maxStudentCount = 0;
+
+        for (Course course : courseList) {
+            int studentCount = course.getRegisteredStudents().size();
+            if (studentCount > maxStudentCount) {
+                maxStudentCount = studentCount;
+                courseWithMaxStudents = course;
+            }
+        }
+
+        return courseWithMaxStudents;
+    }
 
     
 }

@@ -48,8 +48,22 @@ public class StudentDirectory {
             }
         }
             return null; //not found after going through the whole list
-         }
+    }
     
-    
+    public StudentProfile findStudentWithMostCourses() {
+        StudentProfile studentWithMostCourses = null;
+        int maxCourseCount = 0;
+
+        for (StudentProfile student : studentlist) {
+            int courseCount = student.getCourseList().size();
+            if (courseCount > maxCourseCount) {
+                maxCourseCount = courseCount;
+                studentWithMostCourses = student;
+            }
+        }
+
+        return studentWithMostCourses;
+    }
+
     
 }

@@ -78,5 +78,13 @@ public class UserAccountDirectory {
         }
         return false;
     }
-
+     
+    public UserAccount findUserAccountByProfile(Profile profile) {
+        for (UserAccount ua : useraccountlist) {
+            if (ua.getAssociatedPersonProfile() == profile) {
+                return ua;
+            }
+        }
+        return null; // Not found after going through the whole list
+    }
 }

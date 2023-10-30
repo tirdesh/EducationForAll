@@ -48,6 +48,22 @@ public class ProfessorDirectory {
             }
         }
             return null; //not found after going through the whole list
-         }
+    }
+    
+    public ProfessorProfile findProfessorWithMostCourses() {
+        ProfessorProfile professorWithMostCourses = null;
+        int maxCourseCount = 0;
+
+        for (ProfessorProfile professor : professorlist) {
+            int courseCount = professor.getCourseList().size();
+            if (courseCount > maxCourseCount) {
+                maxCourseCount = courseCount;
+                professorWithMostCourses = professor;
+            }
+        }
+
+        return professorWithMostCourses;
+    }
+
     
 }
