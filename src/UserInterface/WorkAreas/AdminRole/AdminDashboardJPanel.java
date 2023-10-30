@@ -447,35 +447,38 @@ public class AdminDashboardJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(jComboBoxTermSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(77, 77, 77)
-                            .addComponent(jComboBoxTermSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 42, 42)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 42, 42)
-                            .addComponent(jLabel11)))
+                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel14)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -650,7 +653,7 @@ public List<String> getAllCourseTermYears() {
         jTableProfessor.setModel(tableModel);
     }
 
-    private void populateTopEmployers() {
+private void populateTopEmployers() {
     // Create a custom table model for jTableEmployers if you haven't done this already
     DefaultTableModel tableModel = new DefaultTableModel();
     tableModel.addColumn("Employer");
@@ -659,11 +662,8 @@ public List<String> getAllCourseTermYears() {
     // Retrieve the list of employers
     ArrayList<EmployerProfile> employers = business.getEmployerDirectory().getEmployerlist();
 
-    // Sort the employers based on your criteria (e.g., job postings, ratings, etc.)
-    employers.sort(Comparator.comparingInt(employer -> employer.getJobOpenings().size()));
-
-    // Reverse the list to get the top employers first (if you want the highest values at the top)
-    Collections.reverse(employers);
+    // Sort the employers based on the number of job postings in descending order
+    employers.sort((employer1, employer2) -> Integer.compare(employer2.getJobOpenings().size(), employer1.getJobOpenings().size()));
 
     // Clear the existing data from the table model
     tableModel.setRowCount(0);
@@ -682,41 +682,40 @@ public List<String> getAllCourseTermYears() {
 }
 
     
-    private void populateTopCourses(ArrayList<Course> courseList) {
-        // Create a custom table model for jTableTopFiveCourses if you haven't done this already
-        DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.addColumn("Course");
-        tableModel.addColumn("Professor");
-        tableModel.addColumn("No. of Students");
+private void populateTopCourses(ArrayList<Course> courseList) {
+    // Create a custom table model for jTableTopFiveCourses if you haven't done this already
+    DefaultTableModel tableModel = new DefaultTableModel();
+    tableModel.addColumn("Course");
+    tableModel.addColumn("Professor");
+    tableModel.addColumn("No. of Students");
 
-        // Retrieve the list of courses
-        ArrayList<Course> courses = courseList;
+    // Retrieve the list of courses
+    ArrayList<Course> courses = courseList;
 
-        // Sort the courses based on the number of students
-        courses.sort(Comparator.comparingInt(course -> course.getRegisteredStudents().size()));
+    // Sort the courses based on the number of students in descending order
+    courses.sort((course1, course2) -> Integer.compare(course2.getRegisteredStudents().size(), course1.getRegisteredStudents().size()));
 
-        // Clear the existing data from the table model
-        tableModel.setRowCount(0);
+    // Clear the existing data from the table model
+    tableModel.setRowCount(0);
 
-        // Populate the table model with the top five courses by student count (or fewer if there are fewer than five courses)
-        for (int i = 0; i < Math.min(5, courses.size()); i++) {
-            Course course = courses.get(i);
-            String courseName = course.getCourseName();
-            ProfessorProfile professor = course.getProfessorProfile();
-            String professorName;
-            if (professor!= null){
-                professorName = professor.getPerson().getFirst_name()+ " " + professor.getPerson().getLast_name();
-            }
-            else{
-                professorName = "professor X";
-            }
-            int numberOfStudents = course.getRegisteredStudents().size();
-            tableModel.addRow(new Object[]{courseName, professorName, numberOfStudents});
+    // Populate the table model with the top five courses by student count (or fewer if there are fewer than five courses)
+    for (int i = 0; i < Math.min(5, courses.size()); i++) {
+        Course course = courses.get(i);
+        String courseName = course.getCourseName();
+        ProfessorProfile professor = course.getProfessorProfile();
+        String professorName;
+        if (professor != null) {
+            professorName = professor.getPerson().getFirst_name() + " " + professor.getPerson().getLast_name();
+        } else {
+            professorName = "professor X";
         }
-
-        // Set the table model for jTableTopFiveCourses
-        jTableCourses.setModel(tableModel);
+        int numberOfStudents = course.getRegisteredStudents().size();
+        tableModel.addRow(new Object[]{courseName, professorName, numberOfStudents});
     }
+
+    // Set the table model for jTableTopFiveCourses
+    jTableCourses.setModel(tableModel);
+}
 
     private void updateDashboard(ArrayList<Course> coursesToDisplay) {
     jLabelWelcome.setText("Welcome Admin");

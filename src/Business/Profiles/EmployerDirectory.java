@@ -48,6 +48,22 @@ public class EmployerDirectory {
             }
         }
             return null; //not found after going through the whole list
-         }
+    }
+    
+    public EmployerProfile findEmployerWithMostJobs() {
+        EmployerProfile employerWithMostJobs = null;
+        int maxJobCount = 0;
+
+        for (EmployerProfile employer : employerlist) {
+            int jobCount = employer.getJobOpenings().size();
+            if (jobCount > maxJobCount) {
+                maxJobCount = jobCount;
+                employerWithMostJobs = employer;
+            }
+        }
+
+        return employerWithMostJobs;
+    }
+
     
 }

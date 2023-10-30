@@ -9,6 +9,7 @@ import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.StudentProfile;
 import Business.UserAccounts.UserAccount;
+import UserInterface.WorkAreas.EmployerRole.EmployerWorkAreaJPanel;
 import UserInterface.WorkAreas.ProfessorRole.ProfessorWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import javax.swing.JPanel;
@@ -218,17 +219,24 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         if(actualuser.getRole().equals("Student")){
-        StudentWorkAreaJPanel studentWorkAreaJPanel = new StudentWorkAreaJPanel(business, spp, CardSequencePanel);
-        CardSequencePanel.removeAll();
-        CardSequencePanel.add("spp", studentWorkAreaJPanel);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+            StudentWorkAreaJPanel studentWorkAreaJPanel = new StudentWorkAreaJPanel(business, spp, CardSequencePanel);
+            CardSequencePanel.removeAll();
+            CardSequencePanel.add("spp", studentWorkAreaJPanel);
+            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        }
+        else if(actualuser.getRole().equals("Professor")){
+            ProfessorWorkAreaJPanel professorWorkAreaJPanel = new ProfessorWorkAreaJPanel(business, pp, CardSequencePanel);
+            CardSequencePanel.removeAll();
+            CardSequencePanel.add("pp", professorWorkAreaJPanel);
+            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
         }
         else{
-        ProfessorWorkAreaJPanel professorWorkAreaJPanel = new ProfessorWorkAreaJPanel(business, pp, CardSequencePanel);
-        CardSequencePanel.removeAll();
-        CardSequencePanel.add("pp", professorWorkAreaJPanel);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+            EmployerWorkAreaJPanel employerWorkAreaJPanel = new EmployerWorkAreaJPanel(business, ep, CardSequencePanel);
+            CardSequencePanel.removeAll();
+            CardSequencePanel.add("ep", employerWorkAreaJPanel);
+            ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
         }
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
