@@ -12,10 +12,18 @@ package UserInterface.WorkAreas.StudentRole;
 
 import Business.Business;
 import Business.Profiles.StudentProfile;
+import UserInterface.WorkAreas.StudentRole.CourseRegistration.RegistrationJPanel;
+import UserInterface.WorkAreas.StudentRole.CourseRegistration.StudentCourseworkJPanel;
+import UserInterface.WorkAreas.StudentRole.Transcripts.GradAuditJPanel;
+import UserInterface.WorkAreas.StudentRole.Transcripts.TranscriptJPanel;
 import javax.swing.JPanel;
+import ui.LoginJPanel;
 import ui.ManageProfileJPanel;
 
-
+/**
+ *
+ * @author kal
+ */
 public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;
@@ -53,6 +61,7 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
         jButton11 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(51, 51, 51));
 
@@ -129,6 +138,20 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton13.setBackground(new java.awt.Color(102, 153, 255));
+        jButton13.setFont(getFont());
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("Logout");
+        jButton13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton13.setMaximumSize(new java.awt.Dimension(200, 40));
+        jButton13.setMinimumSize(new java.awt.Dimension(20, 20));
+        jButton13.setPreferredSize(new java.awt.Dimension(240, 25));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,14 +162,15 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                             .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(590, Short.MAX_VALUE))
+                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                .addGap(548, 548, 548))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,13 +186,18 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4IdentifyResourceAssetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4IdentifyResourceAssetsActionPerformed
-        
+
+        StudentCourseworkJPanel panel = new StudentCourseworkJPanel(business, CardSequencePanel,student);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("StudentCourseworkJPanel", panel);
 // TODO add your handling code here:
 
  
@@ -180,19 +209,15 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
  //       CardSequencePanel.add("ManageVulns", aos);
  //       ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
     }//GEN-LAST:event_jButton4IdentifyResourceAssetsActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-         ManageProfileJPanel panel = new ManageProfileJPanel(business, CardSequencePanel,student);
+        ManageProfileJPanel panel = new ManageProfileJPanel(business, CardSequencePanel,student);
         CardSequencePanel.removeAll();
         CardSequencePanel.add("ManageProfileJPanel", panel);
-
-//        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
-        // aos.setAgenda(businessunit.getRiskManagementAgenda());
-//        CardSequencePanel.add("ManageVulns", aos);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 
 //        ManageVulns aos = new  ManageVulns(businessunit, CardSequencePanel);
         // aos.setAgenda(businessunit.getRiskManagementAgenda());
@@ -203,18 +228,25 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-
+        GradAuditJPanel panel = new GradAuditJPanel(business, CardSequencePanel,student);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("GradAuditJPanel", panel);
+        
  /*       ManageSalesPersonOrders iet = new ManageSalesPersonOrders(business, CardSequencePanel);
 
         CardSequencePanel.add("FindResourceAsset", iet);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
 */
+ ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-
+        RegistrationJPanel panel = new RegistrationJPanel(business, CardSequencePanel,student);
         CardSequencePanel.removeAll();
+        CardSequencePanel.add("RegistrationJPanel", panel);
+        
+//        CardSequencePanel.removeAll();
 //        ManageIncidents aos = new  ManageIncidents(businessunit, CardSequencePanel);
         // aos.setAgenda(businessunit.getRiskManagementAgenda());
 //        CardSequencePanel.add("RiskAgendaObjectives", aos);
@@ -223,13 +255,27 @@ public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        TranscriptJPanel panel = new TranscriptJPanel(business, CardSequencePanel,student);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("TranscriptJPanel", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+         LoginJPanel panel = new LoginJPanel(business, CardSequencePanel);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("LoginJPanel", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    }//GEN-LAST:event_jButton13ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
