@@ -15,6 +15,8 @@ import Business.Employment.JobCatalog;
 import Business.Person.*;
 import Business.Profiles.*;
 import Business.UserAccounts.*;
+import com.github.javafaker.Faker;
+import java.text.DecimalFormat;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +31,8 @@ class ConfigureABusiness {
 
     static Business initialize() {
         Business business = new Business("Information Systems");
+        Faker fake = new Faker();
+
 
 // Create Persons
       PersonDirectory persondirectory = business.getPersonDirectory();
@@ -58,17 +62,17 @@ class ConfigureABusiness {
         StudentProfile sp = studentdirectory.newStudentProfile(s);
         uadirectory.newUserAccount(sp, "student", "student");
         
-        // Create 10 students using a for loop
         for (int i = 1; i <= 30; i++) {
+            Faker faker = new Faker();
             Person studentPerson = persondirectory.newPerson();
-            studentPerson.setFirst_name("stu");
-            studentPerson.setLast_name("dent" + i); // Append a unique number to each student's last name
-            studentPerson.setEmail("student" + i + "@gmail.com");
+            studentPerson.setFirst_name(faker.name().firstName());
+            studentPerson.setLast_name(faker.name().lastName()); // Append a unique number to each student's last name
+            studentPerson.setEmail(faker.internet().emailAddress());
 
             StudentProfile studentProfile = studentdirectory.newStudentProfile(studentPerson);
 
             // Create UserAccount for each student
-            uadirectory.newUserAccount(studentProfile, "student"+i, "student"+i);
+            uadirectory.newUserAccount(studentProfile, faker.name().username(), "student"+i);
         }
 
         
@@ -80,16 +84,17 @@ class ConfigureABusiness {
         uadirectory.newUserAccount(pp, "professor", "professor");
         
         // Create 3 professors using a for loop
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 10; i++) {
+            Faker faker = new Faker();
             Person professorPerson = persondirectory.newPerson();
-            professorPerson.setFirst_name("prof");
-            professorPerson.setLast_name("essor" + i); // Append a unique number to each professor's last name
-            professorPerson.setEmail("professor" + i + "@gmail.com");
+            professorPerson.setFirst_name(faker.name().firstName());
+            professorPerson.setLast_name(faker.name().lastName()); // Append a unique number to each professor's last name
+            professorPerson.setEmail(faker.internet().emailAddress());
 
             ProfessorProfile professorProfile = professordirectory.newProfessorProfile(professorPerson);
 
             // Create UserAccount for each professor
-            uadirectory.newUserAccount(professorProfile, "professor"+i, "professor"+i);
+            uadirectory.newUserAccount(professorProfile, faker.name().username(), "professor"+i);
         }
         
         
@@ -99,6 +104,17 @@ class ConfigureABusiness {
         e.setEmail("employer@gmail.com");
         EmployerProfile ep = employerdirectory.newEmployerProfile(e, "Top Company", "Best Industry");
         uadirectory.newUserAccount(ep, "employer", "employer");
+        
+        for (int i = 1; i <= 10; i++) {
+            Faker faker = new Faker();
+            Person person = persondirectory.newPerson();
+            person.setEmail(faker.internet().emailAddress());
+
+            EmployerProfile empProfile = employerdirectory.newEmployerProfile(person, faker.company().name(), faker.company().industry());
+
+            // Create UserAccount for each professor
+            uadirectory.newUserAccount(empProfile, faker.name().username(), "employer"+i);
+        }
         
         // Course 1: Term-Based Course
         Course course1 = coursecatalog.newCourse("Introduction to Programming", "Learn the basics of programming", new ArrayList<>(), 3);
@@ -268,29 +284,180 @@ class ConfigureABusiness {
                     newCourse.getPrerequisites().add(coursecatalog.getCourseList().get(i - 1)); // Add the previous course as a prerequisite
                 }
             }
+            newCourse.getRatingSystem().addRating(1 + (5 - 1) * fake.random().nextDouble(), studentdirectory.getStudentlist().get(i % studentdirectory.getStudentlist().size()));
+            newCourse.getRatingSystem().addRating(1 + (5 - 1) * fake.random().nextDouble(), employerdirectory.getEmployerlist().get(i % employerdirectory.getEmployerlist().size()));
 
             // Get a professor's profile from professordirectory
-            ProfessorProfile professorProfile = professordirectory.getProfessorlist().get(i % 3); // Assuming you have at least 3 professors
+            ProfessorProfile professorProfile = professordirectory.getProfessorlist().get(i % professordirectory.getProfessorlist().size()); // Assuming you have at least 3 professors
 
             // Add the course to the professor's profile
             professorProfile.addCourseToProfile(newCourse);
+            newCourse.setProfessorProfile(professorProfile);
         }
 
+        for (int i = 1; i <= 10; i++) {
+            Faker faker = new Faker();
+            String randomCourseTitle = faker.educator().course();
+            String randomCourseDescription = faker.lorem().sentence(5);
+            int randomCourseHours = courseHours.get(new Random().nextInt(courseHours.size()));
+                    
+            Course newCourse = coursecatalog.newCourse(randomCourseTitle, randomCourseDescription, new ArrayList<>(), randomCourseHours);
+
+            if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+                // Create an academic calendar-based course
+                String term = (i % 4 == 0) ? "Spring" : (i % 4 == 1) ? "Summer" : (i % 4 == 2) ? "Fall" : "Winter";
+                int year = 2023 + (i / 4); // Adjust term and year for each course
+                // Ensure that the year doesn't exceed 2029
+                if (year > 2028) {
+                    year = 2028;
+                }
+                if (year == 2023){
+                    term = "Fall";
+                }
+                newCourse.setTermBased(true);
+                newCourse.setCourseDuration(term, year, academicCalendar);
+                newCourse.setSessionType("Live");
+                newCourse.createLiveClassSchedule(term, year, academicCalendar, LocalTime.of(9, 0), Arrays.asList(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.FRIDAY));
+            } else {
+                // Create an on-demand course
+                newCourse.setTermBased(false);
+                LocalDate startDate = LocalDate.of(2023, 8, 1).plusMonths(i); // Adjust start date
+                LocalDate endDate = startDate.plusMonths(4); // Set end date 4 months after start date
+                newCourse.setCourseDuration(startDate, endDate);
+                newCourse.setSessionType("Recorded");
+                newCourse.createOnDemandClassSchedule(startDate, endDate, LocalTime.of(10, 0), Arrays.asList(DayOfWeek.TUESDAY, DayOfWeek.THURSDAY));
+
+                // Add prerequisites to every odd-numbered course
+                if (i % 2 != 0) {
+                    newCourse.getPrerequisites().add(coursecatalog.getCourseList().get(i - 1)); // Add the previous course as a prerequisite
+                }
+            }
+            // Generate random student and employer ratings with two decimal places
+            double studentRating = 1.00 + (4.00 * fake.random().nextDouble());
+            double employerRating = 1.00 + (4.00 * fake.random().nextDouble());
+
+            // Format the ratings to two decimal places
+            DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+            String formattedStudentRating = decimalFormat.format(studentRating);
+            String formattedEmployerRating = decimalFormat.format(employerRating);
+
+            // Convert the formatted ratings back to double
+            double finalStudentRating = Double.parseDouble(formattedStudentRating);
+            double finalEmployerRating = Double.parseDouble(formattedEmployerRating);
+
+            // Get a student and employer to assign the ratings
+            StudentProfile randomStudent = studentdirectory.getStudentlist().get(i % studentdirectory.getStudentlist().size());
+            EmployerProfile randomEmployer = employerdirectory.getEmployerlist().get(i % employerdirectory.getEmployerlist().size());
+
+            // Add the ratings to the course's rating system
+            newCourse.getRatingSystem().addRating(finalStudentRating, randomStudent);
+            newCourse.getRatingSystem().addRating(finalEmployerRating, randomEmployer);
+            
+            // Get a professor's profile from professordirectory
+            ProfessorProfile professorProfile = professordirectory.getProfessorlist().get(i % professordirectory.getProfessorlist().size()); // Assuming you have at least 3 professors
+
+            // Add the course to the professor's profile
+            professorProfile.addCourseToProfile(newCourse);
+            newCourse.setProfessorProfile(professorProfile);
+        }
         
-                // Set a random tech stack for existing courses in the course catalog
+        for (int i = 1; i <= 20; i++) {
+            Faker faker = new Faker();
+            String randomJobTitle = faker.job().title();
+            String randomJobDescription = faker.lorem().sentence(5);
+            String randomJobLocation = faker.address().city() + ", " + faker.address().state();
+
+            // Create a new job opening with Faker-generated data
+            Job job = jobcatalog.newJob(randomJobTitle, randomJobDescription, randomJobLocation);
+
+            // Get a random employer profile from the employerdirectory
+            EmployerProfile employerProfile = employerdirectory.getEmployerlist().get(i % employerdirectory.getEmployerlist().size());
+
+            // Assign the job to the employer
+            job.setEmployerProfile(employerProfile);
+
+            // Add the job opening to the employer's list of job openings
+            employerProfile.addJobOpening(job);
+        }
+
+
+        
+        // Set a random tech stack for existing courses in the course catalog
         for (Course course : coursecatalog.getCourseList()) {
             TechStack randomTechStack;
             randomTechStack = generateRandomTechStack();
             course.setTechStack(randomTechStack);
         }
         
-        assignCoursesToStudents(business);
+        for (Job job : jobcatalog.getJobList()) {
+            TechStack randomTechStack = generateRandomTechStack();
+            job.setTechStack(randomTechStack);
+        }
+        
+        for (ProfessorProfile ppr: professordirectory.getProfessorlist()){
+            // Generate and add random ratings from students
+            for (StudentProfile studentProfile : studentdirectory.getStudentlist()) {
+                double studentRating = 1 + (5 - 1) * fake.random().nextDouble();
+                                        // Format the random rating to two decimal places
+                DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+                String formattedRating = decimalFormat.format(studentRating);
+                // Convert the formatted rating back to a double
+                double finalRating = Double.parseDouble(formattedRating);
+                ppr.getRatingSystem().addRating(finalRating, studentProfile);
+            }
 
+            // Generate and add random ratings from employers
+            for (EmployerProfile employerProfile : employerdirectory.getEmployerlist()) {
+                double employerRating = 1 + (5 - 1) * fake.random().nextDouble();
+                        // Format the random rating to two decimal places
+                DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+                String formattedRating = decimalFormat.format(employerRating);
+                // Convert the formatted rating back to a double
+                double finalRating = Double.parseDouble(formattedRating);
+                ppr.getRatingSystem().addRating(finalRating, employerProfile);
+            }        
+        }
+
+        
+        assignCoursesToStudents(business);
+        assignRandomRelevantCoursesToJobs(business);
+
+        for (StudentProfile stu: studentdirectory.getStudentlist()) {
+
+            // Assuming you have a list of enrolled courses for each student
+            List<Course> enrolledCourses = stu.getCourseList(); // Replace with your actual list
+
+            for (Course course : enrolledCourses) {
+                // Generate a random progress value (0 to 100) or use your own logic to set progress
+                int progress = (int) (Math.random() * 101); // Random progress value
+
+                // Set the course progress for the student
+                stu.updateCourseProgress(course, progress);
+            }
+        }
+        
+        UserAccount ua1 = uadirectory.findUserAccountByProfile(employerdirectory.findEmployerWithMostJobs());
+        System.out.println("Employer with most jobs");
+        System.out.println(ua1.getUserLoginName());
+        System.out.println(ua1.getPassword());
+        
+        UserAccount ua2 = uadirectory.findUserAccountByProfile(professordirectory.findProfessorWithMostCourses());
+        System.out.println("Professor with most Courses");
+        System.out.println(ua2.getUserLoginName());
+        System.out.println(ua2.getPassword());
+        
+        UserAccount ua3 = uadirectory.findUserAccountByProfile(coursecatalog.findCourseWithMaxStudents().getProfessorProfile());
+        System.out.println("Professor teaching the most popular course");
+        System.out.println(ua3.getUserLoginName());
+        System.out.println(ua3.getPassword());
+        
+        UserAccount ua4 = uadirectory.findUserAccountByProfile(studentdirectory.findStudentWithMostCourses());
+        System.out.println("Student with most courses");
+        System.out.println(ua4.getUserLoginName());
+        System.out.println(ua4.getPassword());
+        
         
         return business;
-        
-        
-
     }
     
     // Method to generate a random Tech Stack
@@ -365,5 +532,22 @@ class ConfigureABusiness {
             }
         }
     }
+
+        public static void assignRandomRelevantCoursesToJobs(Business business) {
+            CourseCatalog courseCatalog = business.getCourseCatalog();
+            JobCatalog jobCatalog = business.getJobCatalog();
+            Random random = new Random();
+
+            for (Job job : jobCatalog.getJobList()) {
+                int numberOfRelevantCourses = random.nextInt(5) + 1; // Assign 1 to 3 relevant courses
+                List<Course> availableCourses = new ArrayList<>(courseCatalog.getCourseList());
+                Collections.shuffle(availableCourses);
+
+                for (int i = 0; i < numberOfRelevantCourses && i < availableCourses.size(); i++) {
+                    Course course = availableCourses.get(i);
+                    job.getRelevantCourses().add(course);
+                }
+            }
+        }
 
 }

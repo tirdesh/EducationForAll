@@ -250,10 +250,13 @@ public class SignUpJPanel extends javax.swing.JPanel {
         }
         char[] passwordChars = jPasswordField1.getPassword();
         String password = new String(passwordChars);
-
-        UserAccount acc = business.getUserAccountDirectory().newUserAccount(profile, txtUserName.getText(), password);
-
-        if (acc==null){
+        
+        if (!validatePassword(password)) {
+          JOptionPane.showMessageDialog(this, "Invalid password, Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.");
+        }
+        else{
+            UserAccount acc = business.getUserAccountDirectory().newUserAccount(profile, txtUserName.getText(), password);
+            if (acc==null){
                 JOptionPane.showMessageDialog(this, "Username already exists, hence cannot be created");
                 business.getPersonDirectory().deletePerson(p);
                 if (profile instanceof StudentProfile){
@@ -266,14 +269,15 @@ public class SignUpJPanel extends javax.swing.JPanel {
                     business.getEmployerDirectory().deleteEmployerProfile((EmployerProfile) profile);
                 }
                 
-        }
-        else{
+            }
+            else{
                 String message = "Signup Successful! Your ID is: " + p.getPersonId();
                 JOptionPane.showMessageDialog(this, message);
                 LoginJPanel panel = new LoginJPanel(business, CardSequencePanel);
                 CardSequencePanel.removeAll();
                 CardSequencePanel.add("LoginJPanel", panel);
                 ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+            }
         }
         
     }//GEN-LAST:event_btnSignUpActionPerformed
@@ -312,4 +316,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validatePassword(String password) {
+    // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.
+    return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
+    }
 }
