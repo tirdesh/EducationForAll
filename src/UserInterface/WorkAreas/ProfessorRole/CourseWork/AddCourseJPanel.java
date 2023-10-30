@@ -148,6 +148,11 @@ public class AddCourseJPanel extends javax.swing.JPanel {
         jLabel2.setText("PreRequisites:");
 
         jComboBoxPreRequisites.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPreRequisites.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPreRequisitesActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(jRadioButtonProfessor1);
         jRadioButtonProfessor1.setText("On Demand");
@@ -360,7 +365,7 @@ public class AddCourseJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -529,6 +534,10 @@ public class AddCourseJPanel extends javax.swing.JPanel {
         CardSequencePanel.add("LoginJPanel", panel);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void jComboBoxPreRequisitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPreRequisitesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPreRequisitesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
