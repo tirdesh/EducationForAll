@@ -19,12 +19,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.ListModel;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class ManageCourseJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;
@@ -86,15 +84,16 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jListTools = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jComboBoxSelectCourse = new javax.swing.JComboBox<>();
         jButtonEdit = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jListClassDays = new javax.swing.JList<>();
+        jButtonCopy = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jListProgrammingLanguages1 = new javax.swing.JList<>();
 
         lblLastName.setText("Description:");
 
@@ -214,8 +213,6 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Tools:");
 
-        jLabel8.setText("Class Days:");
-
         jLabel9.setText("Class Time:");
 
         jTextField3.setText("23:23");
@@ -243,12 +240,18 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
             }
         });
 
-        jListClassDays.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jButtonCopy.setText("Copy");
+        jButtonCopy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCopyActionPerformed(evt);
+            }
         });
-        jScrollPane5.setViewportView(jListClassDays);
+
+        jLabel8.setText("Class Days:");
+
+        DefaultListModel<String> listModelProgrammingLanguages1 = new DefaultListModel<>();
+        jListProgrammingLanguages1.setModel(listModelProgrammingLanguages1);
+        jScrollPane6.setViewportView(jListProgrammingLanguages1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -264,63 +267,67 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
                         .addGap(149, 149, 149)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(90, 90, 90)
                                 .addComponent(jButtonEdit)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonDelete))
+                                .addComponent(jButtonDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonCopy))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBoxSelectCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jComboBoxSelectCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(318, 318, 318)
+                        .addGap(253, 253, 253)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRole1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFirstName)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblRole1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblRole, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblFirstName)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(15, 15, 15)
-                                                .addComponent(lblLastName))
-                                            .addComponent(lblLastName1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(15, 15, 15)
+                                            .addComponent(lblLastName))
+                                        .addComponent(lblLastName1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBoxPreRequisites, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonStudent1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonProfessor1))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jComboBoxPreRequisites, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioButtonStudent1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jRadioButtonProfessor1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioButtonStudent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jRadioButtonProfessor))
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonStudent)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonProfessor))
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,13 +336,8 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
                         .addComponent(lblEmail))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(370, 370, 370)
-                        .addComponent(btnUpdateCourse))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))))
-                .addGap(0, 550, Short.MAX_VALUE))
+                        .addComponent(btnUpdateCourse)))
+                .addGap(0, 1829, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +356,8 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonEdit)
-                            .addComponent(jButtonDelete)))
+                            .addComponent(jButtonDelete)
+                            .addComponent(jButtonCopy)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnBack)
@@ -397,29 +400,35 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
                             .addComponent(jRadioButtonStudent1)
                             .addComponent(lblRole1))
                         .addComponent(jRadioButtonProfessor1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnUpdateCourse)
-                .addContainerGap())
+                .addGap(52, 52, 52))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -438,61 +447,67 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     private void btnUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCourseActionPerformed
         // TODO add your handling code here:
     // Get the values entered by the user
-                    jButtonEdit.setVisible(false);
-
+       jButtonEdit.setVisible(false);
+       //System.out.println("Selected tools(update): " + jListTools.getSelectedValuesList());
        Course newCourse;
+           
 
-            String selectedCourseName = (String) jComboBoxSelectCourse.getSelectedItem();
+       String selectedCourseName = (String) jComboBoxSelectCourse.getSelectedItem();
 
         if (selectedCourseName != null && !"Select a Course".equals(selectedCourseName)) {
             String courseName = txtFirstName.getText();
-    String description = jTextArea1.getText();
-    int courseHours = Integer.parseInt(txtEmail.getText());
-    
-    String sessionType = "";
-    if (jRadioButtonStudent.isSelected()) {
-        sessionType = "Live";
-    } else if (jRadioButtonProfessor.isSelected()) {
-        sessionType = "Recorded";
-    }
-    populateTechStack();
-    
-
-    // Create a new Course object
+            String description = jTextArea1.getText();
+            int courseHours = Integer.parseInt(txtEmail.getText());
+            String sessionType = "";
+            if (jRadioButtonStudent.isSelected()) {
+                sessionType = "Live";
+            } else if (jRadioButtonProfessor.isSelected()) {
+                sessionType = "Recorded";
+            }
+            //populateTechStack();
+            if ("Copy Course".equals(btnUpdateCourse.getText())){
+                newCourse = business.getCourseCatalog().newCourse(courseName, description, new ArrayList<>(), courseHours);
+                professor.addCourseToProfile(newCourse);
+                JOptionPane.showMessageDialog(this, "Course has been copied successfully!");
+            }
+            else{
                 newCourse = professor.findCourse(courseName);
                 newCourse.setCourseName(courseName);
                 newCourse.setDescription(description);
                 newCourse.setCourseHours(courseHours);
-        List<String> programmingLanguages = newCourse.getTechStack().getProgrammingLanguages();
-        List<String> frameworks = newCourse.getTechStack().getFrameworks();
-        List<String> tools = newCourse.getTechStack().getTools();
-        for (String language : programmingLanguages) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
-        }
-        for (String language : frameworks) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
-        }
-        for (String language : tools) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
-        }
+                JOptionPane.showMessageDialog(this, "Course has been updated successfully!");
+            }
+
+
+//        List<String> programmingLanguages = newCourse.getTechStack().getProgrammingLanguages();
+//        List<String> frameworks = newCourse.getTechStack().getFrameworks();
+//        List<String> tools = newCourse.getTechStack().getTools();
+//        for (String language : programmingLanguages) {
+//            jListProgrammingLanguages.setSelectedValue(language, true);
+//        }
+//        for (String language : frameworks) {
+//            jListProgrammingLanguages.setSelectedValue(language, true);
+//        }
+//        for (String language : tools) {
+//            jListProgrammingLanguages.setSelectedValue(language, true);
+//        }
         // Set the session type for the course
         newCourse.setSessionType(sessionType);
         LocalTime classTime = LocalTime.parse(jTextField3.getText());
             // Fetch class days from jListProgrammingLanguages1
-        List<String> selectedClassDays = jListClassDays.getSelectedValuesList();
+        List<String> selectedClassDays = jListProgrammingLanguages1.getSelectedValuesList();
         List<DayOfWeek> classDays = new ArrayList<>();
 
         // Convert the selected day strings to DayOfWeek enum values
         for (String selectedDay : selectedClassDays) {
             switch (selectedDay) {
-                case "MONDAY" -> classDays.add(DayOfWeek.MONDAY);
-                case "TUESDAY" -> classDays.add(DayOfWeek.TUESDAY);
-                case "WEDNESDAY" -> classDays.add(DayOfWeek.WEDNESDAY);
-                case "THURSDAY" -> classDays.add(DayOfWeek.THURSDAY);
-                case "FRIDAY" -> classDays.add(DayOfWeek.FRIDAY);
-                case "SATURDAY" -> classDays.add(DayOfWeek.SATURDAY);
-                case "SUNDAY" -> classDays.add(DayOfWeek.SUNDAY);
-                // Add cases for other days as needed
+                case "Monday" -> classDays.add(DayOfWeek.MONDAY);
+                case "Tuesday" -> classDays.add(DayOfWeek.TUESDAY);
+                case "Wednesday" -> classDays.add(DayOfWeek.WEDNESDAY);
+                case "Thursday" -> classDays.add(DayOfWeek.THURSDAY);
+                case "Friday" -> classDays.add(DayOfWeek.FRIDAY);
+                case "Saturday" -> classDays.add(DayOfWeek.SATURDAY);
+                case "Sunday" -> classDays.add(DayOfWeek.SUNDAY);
             }
         }
 
@@ -515,7 +530,7 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
         newCourse.createOnDemandClassSchedule(startDate, endDate, classTime, classDays);
     }
     
-
+    System.out.print("hi");
     
     // Collect selected programming languages from the JList
     List<String> selectedLanguages = jListProgrammingLanguages.getSelectedValuesList();
@@ -525,21 +540,30 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     
     // Collect selected tools from the JList
     List<String> selectedTools = jListTools.getSelectedValuesList();
-    
+    //System.out.print(selectedTools.get(0));
+    //System.out.println("Selected tools(upd): " + jListTools.getSelectedValuesList());
+
     // Create a TechStack object and set the selected lists
     TechStack techStack = new TechStack(selectedLanguages, selectedFrameworks, selectedTools);
     
     // Set the TechStack for the course
     newCourse.setTechStack(techStack);
-
-    // Add the new course to the course catalog
-    professor.addCourseToProfile(newCourse);
+    
+    try{
+        Course prerequisites = (Course) jComboBoxPreRequisites.getSelectedItem();
+        newCourse.getPrerequisites().add(prerequisites);
+    }
+    catch(ClassCastException ex){
+        String prerequisites = "None";
+    }
+    
     
     // Notify the user that the course has been added
-    JOptionPane.showMessageDialog(this, "Course has been updated successfully!");
                 setCoursePropertiesBasedOnSelection(professor.findCourse(selectedCourseName));
             setCourseFieldsEditable(false);
                 btnUpdateCourse.setVisible(false);
+                        populateCourseComboBox();
+
         }
     
     }//GEN-LAST:event_btnUpdateCourseActionPerformed
@@ -591,9 +615,9 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
 
     private void jComboBoxSelectCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSelectCourseActionPerformed
         // TODO add your handling code here:
-                            jButtonEdit.setVisible(true);
-
-                    jButtonDelete.setVisible(true);
+        jButtonEdit.setVisible(true);
+        jButtonCopy.setVisible(true);
+        jButtonDelete.setVisible(true);
 
         String selectedCourseName = (String) jComboBoxSelectCourse.getSelectedItem();
 
@@ -608,30 +632,84 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
             setCourseFieldsVisibility(false);
             jButtonDelete.setVisible(false);
             jButtonEdit.setVisible(false);
-
+            jButtonCopy.setVisible(false);
         }
     }//GEN-LAST:event_jComboBoxSelectCourseActionPerformed
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         // TODO add your handling code here:
-                            jButtonEdit.setVisible(false);
-
+        jButtonEdit.setVisible(false);
+        jButtonCopy.setVisible(false);
+        jButtonDelete.setVisible(false);
+        
         setCourseFieldsEditable(true);
         populateTechStack();
         Course newCourse = professor.findCourse((String) jComboBoxSelectCourse.getSelectedItem());
         List<String> programmingLanguages = newCourse.getTechStack().getProgrammingLanguages();
         List<String> frameworks = newCourse.getTechStack().getFrameworks();
         List<String> tools = newCourse.getTechStack().getTools();
+        List<DayOfWeek> daysOfWeek = newCourse.getSchedule().getDaysOfWeek(); // Adjust this to your Schedule class
+        List<String> selectedDayStrings = new ArrayList<>();
+
+        for (DayOfWeek day : daysOfWeek) {
+            switch (day) {
+                case MONDAY -> selectedDayStrings.add("Monday");
+                case TUESDAY -> selectedDayStrings.add("Tuesday");
+                case WEDNESDAY -> selectedDayStrings.add("Wednesday");
+                case THURSDAY -> selectedDayStrings.add("Thursday");
+                case FRIDAY -> selectedDayStrings.add("Friday");
+                case SATURDAY -> selectedDayStrings.add("Saturday");
+                case SUNDAY -> selectedDayStrings.add("Sunday");
+            }
+        }
+        
+
+        // Get the existing list models
+        DefaultListModel<String> listModelLanguages = (DefaultListModel<String>) jListProgrammingLanguages.getModel();
+        DefaultListModel<String> listModelFrameworks = (DefaultListModel<String>) jListFrameworks.getModel();
+        DefaultListModel<String> listModelTools = (DefaultListModel<String>) jListTools.getModel();
+        DefaultListModel<String> listModelCDays = (DefaultListModel<String>) jListProgrammingLanguages1.getModel();
+
+        // Clear previous selections
+        jListProgrammingLanguages.clearSelection();
+        jListFrameworks.clearSelection();
+        jListTools.clearSelection();
+        jListProgrammingLanguages1.clearSelection();
+        
+        
+        // Select the values in the lists
+        for (String language : selectedDayStrings) {
+            int index = listModelCDays.indexOf(language);
+            if (index != -1) {
+                jListProgrammingLanguages1.addSelectionInterval(index, index);
+            }
+        }
+        
+        // Select the values in the lists
         for (String language : programmingLanguages) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
+            int index = listModelLanguages.indexOf(language);
+            if (index != -1) {
+                jListProgrammingLanguages.addSelectionInterval(index, index);
+            }
         }
-        for (String language : frameworks) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
+
+        for (String framework : frameworks) {
+            int index = listModelFrameworks.indexOf(framework);
+            if (index != -1) {
+                jListFrameworks.addSelectionInterval(index, index);
+            }
         }
-        for (String language : tools) {
-            jListProgrammingLanguages.setSelectedValue(language, true);
+
+        for (String tool : tools) {
+            int index = listModelTools.indexOf(tool);
+            if (index != -1) {
+                jListTools.addSelectionInterval(index, index);
+            }
         }
+
         btnUpdateCourse.setVisible(true);
+                //System.out.println("Selected tools(edit): " + jListTools.getSelectedValuesList());
+
     }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
@@ -641,6 +719,90 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
         populateCourseComboBox();
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
+    private void jButtonCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCopyActionPerformed
+        // TODO add your handling code here:
+        jButtonEdit.setVisible(false);
+        jButtonCopy.setVisible(false);
+        jButtonDelete.setVisible(false);
+
+        setCourseFieldsEditable(true);
+        populateTechStack();
+        Course newCourse = professor.findCourse((String) jComboBoxSelectCourse.getSelectedItem());
+        String coursename = txtFirstName.getText();
+        int count = 1;
+        if(coursename.contains("_copy")){
+            count = Character.getNumericValue(coursename.charAt(-1))+1;
+            txtFirstName.setText(coursename.split("_copy")[0]+ "_copy" + count);
+        }
+        else{
+            txtFirstName.setText(coursename+ "_copy" + count);
+        }
+        List<String> programmingLanguages = newCourse.getTechStack().getProgrammingLanguages();
+        List<String> frameworks = newCourse.getTechStack().getFrameworks();
+        List<String> tools = newCourse.getTechStack().getTools();
+        List<DayOfWeek> daysOfWeek = newCourse.getSchedule().getDaysOfWeek(); // Adjust this to your Schedule class
+        List<String> selectedDayStrings = new ArrayList<>();
+
+        for (DayOfWeek day : daysOfWeek) {
+            switch (day) {
+                case MONDAY -> selectedDayStrings.add("Monday");
+                case TUESDAY -> selectedDayStrings.add("Tuesday");
+                case WEDNESDAY -> selectedDayStrings.add("Wednesday");
+                case THURSDAY -> selectedDayStrings.add("Thursday");
+                case FRIDAY -> selectedDayStrings.add("Friday");
+                case SATURDAY -> selectedDayStrings.add("Saturday");
+                case SUNDAY -> selectedDayStrings.add("Sunday");
+            }
+        }
+        
+
+        // Get the existing list models
+        DefaultListModel<String> listModelLanguages = (DefaultListModel<String>) jListProgrammingLanguages.getModel();
+        DefaultListModel<String> listModelFrameworks = (DefaultListModel<String>) jListFrameworks.getModel();
+        DefaultListModel<String> listModelTools = (DefaultListModel<String>) jListTools.getModel();
+        DefaultListModel<String> listModelCDays = (DefaultListModel<String>) jListProgrammingLanguages1.getModel();
+
+        // Clear previous selections
+        jListProgrammingLanguages.clearSelection();
+        jListFrameworks.clearSelection();
+        jListTools.clearSelection();
+        jListProgrammingLanguages1.clearSelection();
+        
+        
+        // Select the values in the lists
+        for (String language : selectedDayStrings) {
+            int index = listModelCDays.indexOf(language);
+            if (index != -1) {
+                jListProgrammingLanguages1.addSelectionInterval(index, index);
+            }
+        }
+        // Select the values in the lists
+        for (String language : programmingLanguages) {
+            int index = listModelLanguages.indexOf(language);
+            if (index != -1) {
+                jListProgrammingLanguages.addSelectionInterval(index, index);
+            }
+        }
+
+        for (String framework : frameworks) {
+            int index = listModelFrameworks.indexOf(framework);
+            if (index != -1) {
+                jListFrameworks.addSelectionInterval(index, index);
+            }
+        }
+
+        for (String tool : tools) {
+            int index = listModelTools.indexOf(tool);
+            if (index != -1) {
+                jListTools.addSelectionInterval(index, index);
+            }
+        }
+
+        btnUpdateCourse.setText("Copy Course");
+        btnUpdateCourse.setVisible(true);
+
+    }//GEN-LAST:event_jButtonCopyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -648,6 +810,7 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdateCourse;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButtonCopy;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonEdit;
     private javax.swing.JComboBox<String> jComboBoxPreRequisites;
@@ -662,9 +825,9 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jListClassDays;
     private javax.swing.JList<String> jListFrameworks;
     private javax.swing.JList<String> jListProgrammingLanguages;
+    private javax.swing.JList<String> jListProgrammingLanguages1;
     private javax.swing.JList<String> jListTools;
     private javax.swing.JRadioButton jRadioButtonProfessor;
     private javax.swing.JRadioButton jRadioButtonProfessor1;
@@ -674,7 +837,7 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -712,7 +875,25 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     
     public void populateTechStack() {
     // Create a list of programming languages
-    List<String> programmingLanguages = Arrays.asList("Java", "Python", "C++", "JavaScript", "Ruby", "Swift");
+        List<String> cdays = Arrays.asList(
+            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        );
+
+    // Create a DefaultListModel to store the programming languages
+    DefaultListModel<String> listModelcdays = new DefaultListModel<>();
+
+    // Add each programming language to the list model
+    for (String language : cdays) {
+        listModelcdays.addElement(language);
+    }
+    jListProgrammingLanguages1.setModel(listModelcdays);
+    // Create a list of programming languages
+        List<String> programmingLanguages = Arrays.asList(
+        "Java", "Python", "C++", "JavaScript", "Ruby", "Swift",
+        "C#", "PHP", "Go", "Rust", "TypeScript", "Kotlin",
+        "Perl", "Scala", "Haskell", "Objective-C", "Lua", "Dart",
+        "SQL", "HTML"
+    );
 
     // Create a DefaultListModel to store the programming languages
     DefaultListModel<String> listModelLanguages = new DefaultListModel<>();
@@ -726,7 +907,12 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     jListProgrammingLanguages.setModel(listModelLanguages);
 
     // Create a list of frameworks
-    List<String> frameworks = Arrays.asList("Spring", "Hibernate", "React", "Angular", "Node.js", "Django");
+    List<String> frameworks = Arrays.asList(
+        "Spring", "Hibernate", "React", "Angular", "Node.js", "Django",
+        "Ruby on Rails", "Vue.js", "Laravel", "Express.js", "Flask", "Struts",
+        "Ember.js", "Play Framework", "Meteor", "Symfony", "ASP.NET Core", "CakePHP",
+        "MySQL", "MongoDB"
+    );
 
     // Create a DefaultListModel to store the frameworks
     DefaultListModel<String> listModelFrameworks = new DefaultListModel<>();
@@ -740,7 +926,12 @@ public class ManageCourseJPanel extends javax.swing.JPanel {
     jListFrameworks.setModel(listModelFrameworks);
 
     // Create a list of tools
-    List<String> tools = Arrays.asList("Eclipse", "IntelliJ", "Git", "Visual Studio Code", "PyCharm", "Sublime Text");
+    List<String> tools = Arrays.asList(
+        "Eclipse", "IntelliJ IDEA", "Git", "Visual Studio Code", "PyCharm", "Sublime Text",
+        "NetBeans", "Android Studio", "Xcode", "Atom", "Notepad++", "Vim",
+        "Eclipse", "Visual Studio", "CLion", "WebStorm", "Rider", "Code::Blocks",
+        "SQL Server Management Studio"
+    );
 
     // Create a DefaultListModel to store the tools
     DefaultListModel<String> listModelTools = new DefaultListModel<>();
@@ -780,7 +971,7 @@ private void setCourseFieldsVisibility(boolean isVisible) {
     jLabel7.setVisible(isVisible);
     jScrollPane4.setVisible(isVisible);
     jLabel8.setVisible(isVisible);
-    jScrollPane5.setVisible(isVisible);
+    jScrollPane6.setVisible(isVisible);
     jLabel9.setVisible(isVisible);
     jScrollPane1.setVisible(isVisible);
     jTextField3.setVisible(isVisible);
@@ -805,7 +996,7 @@ private void setCourseFieldsEditable(boolean isEditable) {
     jTextField2.setEditable(isEditable);
     jTextField3.setEditable(isEditable);
     jTextArea1.setEditable(isEditable);
-    jListClassDays.setEnabled(isEditable);
+    jListProgrammingLanguages1.setEnabled(isEditable);
     jListProgrammingLanguages.setEnabled(isEditable);
     jListFrameworks.setEnabled(isEditable);
     jListTools.setEnabled(isEditable);
@@ -850,31 +1041,65 @@ private void setCoursePropertiesBasedOnSelection(Course selectedCourse) {
         List<String> programmingLanguages = selectedCourse.getTechStack().getProgrammingLanguages();
         List<String> frameworks = selectedCourse.getTechStack().getFrameworks();
         List<String> tools = selectedCourse.getTechStack().getTools();
+        
 //                // Set the selected class days
         List<DayOfWeek> daysOfWeek = selectedCourse.getSchedule().getDaysOfWeek(); // Adjust this to your Schedule class
-        List<String> classDays = new ArrayList<>();
-        for (DayOfWeek dayOfWeek : daysOfWeek) {
-            classDays.add(dayOfWeek.toString());
-        }        
-//                        System.out.println(daysOfWeek.get(0));
-//                        System.out.println(daysOfWeek.get(0).toString());
-//
-        System.out.println(classDays);
-        System.out.println(classDays.getClass().getName());
+        List<String> selectedDayStrings = new ArrayList<>();
+
+        for (DayOfWeek day : daysOfWeek) {
+            switch (day) {
+                case MONDAY -> selectedDayStrings.add("Monday");
+                case TUESDAY -> selectedDayStrings.add("Tuesday");
+                case WEDNESDAY -> selectedDayStrings.add("Wednesday");
+                case THURSDAY -> selectedDayStrings.add("Thursday");
+                case FRIDAY -> selectedDayStrings.add("Friday");
+                case SATURDAY -> selectedDayStrings.add("Saturday");
+                case SUNDAY -> selectedDayStrings.add("Sunday");
+            }
+        }
+        
+        ListModel model = jListProgrammingLanguages1.getModel();
+        String modelName = model.getClass().getName();
+        ////System.out.println("Model type: " + modelName);
+        // Get the existing list models        
+        model = jListFrameworks.getModel();
+        modelName = model.getClass().getName();
+        ////System.out.println("Model type: " + modelName);
+        // Get the existing list models
+        DefaultListModel<String> listModelClassDays = (DefaultListModel<String>) jListProgrammingLanguages1.getModel();
+
+
+        // Clear previous selections
+        jListProgrammingLanguages1.clearSelection();
+
+        // Select the values in the lists
+        for (String language : selectedDayStrings) {
+            int index = listModelClassDays.indexOf(language);
+            if (index != -1) {
+                jListProgrammingLanguages1.addSelectionInterval(index, index);
+            }
+        }
+
+
+
         setJListSelectedValues(jListProgrammingLanguages, programmingLanguages);
-        System.out.println(programmingLanguages);
+        ////System.out.println(programmingLanguages);
 
         setJListSelectedValues(jListFrameworks, frameworks);
         
         setJListSelectedValues(jListTools, tools);
-        //setJListSelectedValues(jListClassDays, classDays); // Assuming you have a JList for class days
+        setJListSelectedValues(jListProgrammingLanguages1, selectedDayStrings); // Assuming you have a JList for class days
 
         // Set prerequisites in jComboBoxPreRequisites
         List<Course> prerequisites = selectedCourse.getPrerequisites();
         jComboBoxPreRequisites.removeAllItems();
         for (Course prerequisite : prerequisites) {
-            jComboBoxPreRequisites.addItem(prerequisite.getCourseName());
+            if (prerequisite != null) {
+                jComboBoxPreRequisites.addItem(prerequisite.getCourseName());
+            }
         }
+        //System.out.println("Selected tools(set): " + jListTools.getSelectedValuesList());
+
     }
 }
 

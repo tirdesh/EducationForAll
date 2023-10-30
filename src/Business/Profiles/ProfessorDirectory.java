@@ -10,10 +10,6 @@ import Business.Person.Person;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
 public class ProfessorDirectory {
 
     Business business;
@@ -37,6 +33,10 @@ public class ProfessorDirectory {
         if (profileToDelete != null) {
             professorlist.remove(profileToDelete);
         }
+    }
+
+    public ArrayList<ProfessorProfile> getProfessorlist() {
+        return professorlist;
     }
 
     public ProfessorProfile findProfessor(int id) {

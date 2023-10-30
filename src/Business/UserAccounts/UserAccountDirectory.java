@@ -9,10 +9,7 @@ import Business.Profiles.Profile;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class UserAccountDirectory {
     
       ArrayList<UserAccount> useraccountlist ;
@@ -56,6 +53,7 @@ public class UserAccountDirectory {
     public UserAccount authenticate(String username, String password) {
         for (UserAccount ua : useraccountlist) {
             if (ua.getUserLoginName().equals(username) && ua.checkPassword(password)) {
+                this.actualuser = ua;
                 return ua;
             }
         }

@@ -15,10 +15,7 @@ import Business.Profiles.StudentProfile;
 import javax.swing.JPanel;
 import ui.ManageProfileJPanel;
 
-/**
- *
- * @author kal
- */
+
 public class StudentWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;

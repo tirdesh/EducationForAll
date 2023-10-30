@@ -5,6 +5,7 @@ import Business.AcademicCalendar.TermDates;
 import Business.CourseScheduler.Schedule;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.StudentProfile;
+import Business.Ratings.RatingSystem;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,11 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents a course in an academic program.
- * 
- * @author tirdesh
- */
+
 public class Course {
     private String courseName;
     private String description;
@@ -31,25 +28,12 @@ public class Course {
     private Schedule schedule;
     private TechStack techStack;
     private ProfessorProfile professorProfile;
-
     private ArrayList<StudentProfile> registeredStudents;
+    private RatingSystem ratingSystem;
 
-    public ArrayList<StudentProfile> getRegisteredStudents() {
-        return registeredStudents;
-    }
+
     
-    public void addStudent(StudentProfile student) {
-        this.registeredStudents.add(student);
-    }
-      private String Courseprogress;
 
-    public String getCourseprogress() {
-        return Courseprogress;
-    }
-
-    public void setCourseprogress(String Courseprogress) {
-        this.Courseprogress = Courseprogress;
-    }
     public Course(String courseName, String description, ArrayList<Course> prerequisites, int courseHours) {
         // Constructor to initialize basic attributes
         this.courseName = courseName;
@@ -57,10 +41,17 @@ public class Course {
         this.description = description;
         this.prerequisites = prerequisites;
         this.schedule = new Schedule();
+        this.techStack = new TechStack(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        this.registeredStudents = new ArrayList<>();
+        this.ratingSystem = new RatingSystem();
+    }
+
+    public RatingSystem getRatingSystem() {
+        return ratingSystem;
     }
 
     // Getter and Setter methods for all attributes
-
+    
     public void setProfessorProfile(ProfessorProfile professorProfile) {
         this.professorProfile = professorProfile;
     }
@@ -118,6 +109,7 @@ public class Course {
     }
 
     public void setCourseDuration(String term, int termYear, AcademicCalendar academicCalendar) {
+        this.termBased = true;
         this.term = term;
         this.termYear = termYear;
         TermDates termDates = academicCalendar.getTermDates(term, termYear);
@@ -134,6 +126,8 @@ public class Course {
 
     public void createLiveClassSchedule(String term, int termYear, AcademicCalendar academicCalendar, LocalTime startTime, List<DayOfWeek> daysOfWeek) {
         // Set course duration based on academic calendar (or start and end dates)
+
+        
         setCourseDuration(term, termYear, academicCalendar);
 
         // Set the session type
@@ -201,4 +195,22 @@ public class Course {
     public String getSessionType() {
         return sessionType;
     }
+    
+    public ArrayList<StudentProfile> getRegisteredStudents() {
+        return registeredStudents;
+    }
+    
+    public void addStudent(StudentProfile student) {
+        this.registeredStudents.add(student);
+    }
+      private String Courseprogress;
+
+    public String getCourseprogress() {
+        return Courseprogress;
+    }
+
+    public void setCourseprogress(String Courseprogress) {
+        this.Courseprogress = Courseprogress;
+    }
+    
 }

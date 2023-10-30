@@ -6,6 +6,7 @@ package ui;
 
 import Business.Business;
 import Business.Person.Person;
+import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
 import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
@@ -14,10 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class SignUpJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;
@@ -56,6 +54,8 @@ public class SignUpJPanel extends javax.swing.JPanel {
         jPasswordField1 = new javax.swing.JPasswordField();
         lblUserName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        jRadioButtonEmployer = new javax.swing.JRadioButton();
 
         lblLastName.setText("Last Name:");
 
@@ -103,7 +103,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
 
         lblPassword.setText("Password:");
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("****");
 
         lblUserName.setText("User Name:");
 
@@ -113,45 +113,75 @@ public class SignUpJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButtonEmployer);
+        jRadioButtonEmployer.setText("Employer");
+        jRadioButtonEmployer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonEmployerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblUserName)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblEmail)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblLastName)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblRole)
-                            .addComponent(lblPassword))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblUserName)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEmail)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblLastName)
+                                    .addComponent(lblFirstName)
+                                    .addComponent(lblPassword)
+                                    .addComponent(lblRole))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSignUp)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRadioButtonStudent)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButtonProfessor)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSignUp)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonStudent)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButtonProfessor)))))))
-                .addContainerGap(410, Short.MAX_VALUE))
+                        .addComponent(jRadioButtonEmployer))
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButtonStudent)
+                        .addComponent(jRadioButtonProfessor)
+                        .addComponent(jRadioButtonEmployer)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName)
                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,14 +201,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRole)
-                    .addComponent(jRadioButtonStudent)
-                    .addComponent(jRadioButtonProfessor))
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(btnSignUp)
-                .addGap(90, 90, 90))
+                .addGap(38, 38, 38))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -206,15 +231,22 @@ public class SignUpJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Assuming you have a StudentProfile class and a Person object
         Person p = business.getPersonDirectory().newPerson();
-        p.setFirst_name(txtFirstName.getText());
-        p.setLast_name(txtLastName.getText());
-        p.setEmail(txtEmail.getText());
         Profile profile; // Declare the profile variable
         if(jRadioButtonStudent.isSelected()){
+            p.setFirst_name(txtFirstName.getText());
+            p.setLast_name(txtLastName.getText());
+            p.setEmail(txtEmail.getText());
             profile = business.getStudentDirectory().newStudentProfile(p);
         }
-        else{
+        else if (jRadioButtonProfessor.isSelected()){
+            p.setFirst_name(txtFirstName.getText());
+            p.setLast_name(txtLastName.getText());
+            p.setEmail(txtEmail.getText());
             profile = business.getProfessorDirectory().newProfessorProfile(p);
+        }
+        else{
+            p.setEmail(txtEmail.getText());            
+            profile = business.getEmployerDirectory().newEmployerProfile(p, txtFirstName.getText(), txtLastName.getText());
         }
         char[] passwordChars = jPasswordField1.getPassword();
         String password = new String(passwordChars);
@@ -230,6 +262,9 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 else if (profile instanceof ProfessorProfile){
                     business.getProfessorDirectory().deleteProfessorProfile((ProfessorProfile) profile);
                 }
+                else if(profile instanceof EmployerProfile){
+                    business.getEmployerDirectory().deleteEmployerProfile((EmployerProfile) profile);
+                }
                 
         }
         else{
@@ -243,11 +278,27 @@ public class SignUpJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnSignUpActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+                LoginJPanel panel = new LoginJPanel(business, CardSequencePanel);
+                CardSequencePanel.removeAll();
+                CardSequencePanel.add("LoginJPanel", panel);
+                ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jRadioButtonEmployerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEmployerActionPerformed
+        // TODO add your handling code here:
+        lblFirstName.setText("Company Name");
+        lblLastName.setText("Industry");
+    }//GEN-LAST:event_jRadioButtonEmployerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSignUp;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButtonEmployer;
     private javax.swing.JRadioButton jRadioButtonProfessor;
     private javax.swing.JRadioButton jRadioButtonStudent;
     private javax.swing.JLabel lblEmail;

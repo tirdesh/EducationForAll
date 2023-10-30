@@ -9,10 +9,7 @@ import Business.Person.Person;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class StudentDirectory {
 
 
@@ -22,6 +19,10 @@ public class StudentDirectory {
 
      studentlist = new ArrayList();
 
+    }
+
+    public ArrayList<StudentProfile> getStudentlist() {
+        return studentlist;
     }
 
     public StudentProfile newStudentProfile(Person p) {

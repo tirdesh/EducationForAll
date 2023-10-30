@@ -7,10 +7,6 @@ package Business.Profiles;
 
 import Business.Person.Person;
 
-/**
- *
- * @author kal bugrara
- */
 public abstract class Profile {
     Person person;
      public Profile(Person p){

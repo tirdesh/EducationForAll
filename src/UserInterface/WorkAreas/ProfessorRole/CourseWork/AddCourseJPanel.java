@@ -32,10 +32,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
 
-/**
- *
- * @author tirdesh
- */
 public class AddCourseJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;
@@ -236,18 +232,36 @@ public class AddCourseJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4)
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(btnAddCourse)))
+                        .addGap(73, 73, 73))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(174, 174, 174)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblFirstName, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblLastName, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblLastName1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -276,24 +290,7 @@ public class AddCourseJPanel extends javax.swing.JPanel {
                             .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jComboBoxPreRequisites, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane4)
-                                    .addComponent(jScrollPane2)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(btnAddCourse)))
-                        .addGap(73, 73, 73)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(198, 198, 198)
@@ -311,24 +308,21 @@ public class AddCourseJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblLastName)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblFirstName)
+                                    .addGap(30, 30, 30)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnBack)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLogOut)
-                                .addGap(88, 88, 88))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblLastName)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblFirstName)
-                                            .addGap(30, 30, 30))))
-                                .addGap(12, 12, 12)))
+                                .addComponent(btnLogOut)))
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jComboBoxPreRequisites, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -423,28 +417,13 @@ public class AddCourseJPanel extends javax.swing.JPanel {
         // Convert the selected day strings to DayOfWeek enum values
         for (String selectedDay : selectedClassDays) {
             switch (selectedDay) {
-                case "Monday":
-                    classDays.add(DayOfWeek.MONDAY);
-                    break;
-                case "Tuesday":
-                    classDays.add(DayOfWeek.TUESDAY);
-                    break;
-                case "Wednesday":
-                    classDays.add(DayOfWeek.WEDNESDAY);
-                    break;
-                case "Thursday":
-                    classDays.add(DayOfWeek.THURSDAY);
-                    break;
-                case "Friday":
-                    classDays.add(DayOfWeek.FRIDAY);
-                    break;
-                case "Saturday":
-                    classDays.add(DayOfWeek.SATURDAY);
-                    break;
-                case "Sunday":
-                    classDays.add(DayOfWeek.SUNDAY);
-                    break;
-                // Add cases for other days as needed
+                case "Monday" -> classDays.add(DayOfWeek.MONDAY);
+                case "Tuesday" -> classDays.add(DayOfWeek.TUESDAY);
+                case "Wednesday" -> classDays.add(DayOfWeek.WEDNESDAY);
+                case "Thursday" -> classDays.add(DayOfWeek.THURSDAY);
+                case "Friday" -> classDays.add(DayOfWeek.FRIDAY);
+                case "Saturday" -> classDays.add(DayOfWeek.SATURDAY);
+                case "Sunday" -> classDays.add(DayOfWeek.SUNDAY);
             }
         }
 
@@ -483,6 +462,14 @@ public class AddCourseJPanel extends javax.swing.JPanel {
     
     // Set the TechStack for the course
     newCourse.setTechStack(techStack);
+    try{
+        Course prerequisites = (Course) jComboBoxPreRequisites.getSelectedItem();
+        newCourse.getPrerequisites().add(prerequisites);
+    }
+    catch(ClassCastException ex){
+        String prerequisites = "None";
+    }
+    
 
     // Add the new course to the course catalog
     professor.addCourseToProfile(newCourse);
@@ -612,8 +599,12 @@ public class AddCourseJPanel extends javax.swing.JPanel {
     
     public void populateTechStack() {
     // Create a list of programming languages
-    List<String> programmingLanguages = Arrays.asList("Java", "Python", "C++", "JavaScript", "Ruby", "Swift");
-
+    List<String> programmingLanguages = Arrays.asList(
+        "Java", "Python", "C++", "JavaScript", "Ruby", "Swift",
+        "C#", "PHP", "Go", "Rust", "TypeScript", "Kotlin",
+        "Perl", "Scala", "Haskell", "Objective-C", "Lua", "Dart",
+        "SQL", "HTML"
+    );
     // Create a DefaultListModel to store the programming languages
     DefaultListModel<String> listModelLanguages = new DefaultListModel<>();
 
@@ -626,7 +617,12 @@ public class AddCourseJPanel extends javax.swing.JPanel {
     jListProgrammingLanguages.setModel(listModelLanguages);
 
     // Create a list of frameworks
-    List<String> frameworks = Arrays.asList("Spring", "Hibernate", "React", "Angular", "Node.js", "Django");
+    List<String> frameworks = Arrays.asList(
+        "Spring", "Hibernate", "React", "Angular", "Node.js", "Django",
+        "Ruby on Rails", "Vue.js", "Laravel", "Express.js", "Flask", "Struts",
+        "Ember.js", "Play Framework", "Meteor", "Symfony", "ASP.NET Core", "CakePHP",
+        "MySQL", "MongoDB"
+    );
 
     // Create a DefaultListModel to store the frameworks
     DefaultListModel<String> listModelFrameworks = new DefaultListModel<>();
@@ -640,8 +636,12 @@ public class AddCourseJPanel extends javax.swing.JPanel {
     jListFrameworks.setModel(listModelFrameworks);
 
     // Create a list of tools
-    List<String> tools = Arrays.asList("Eclipse", "IntelliJ", "Git", "Visual Studio Code", "PyCharm", "Sublime Text");
-
+    List<String> tools = Arrays.asList(
+        "Eclipse", "IntelliJ IDEA", "Git", "Visual Studio Code", "PyCharm", "Sublime Text",
+        "NetBeans", "Android Studio", "Xcode", "Atom", "Notepad++", "Vim",
+        "Eclipse", "Visual Studio", "CLion", "WebStorm", "Rider", "Code::Blocks",
+        "SQL Server Management Studio"
+    );
     // Create a DefaultListModel to store the tools
     DefaultListModel<String> listModelTools = new DefaultListModel<>();
 

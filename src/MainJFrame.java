@@ -24,6 +24,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         loginPanel = new LoginJPanel(business, jPanel1); // Pass your business instance and jPanel1 as parameters
         jPanel1.add(loginPanel);
+        setExtendedState(MAXIMIZED_BOTH); // Maximizes the JFrame
+        //setUndecorated(true); // Removes the window decorations (title bar, border, etc.)
+
     }
 
     /**

@@ -11,10 +11,7 @@ import java.util.ArrayList;
 
 
 
-/**
- *
- * @author kal bugrara
- */
+
 public class UserAccount {
     
     Profile profile;
@@ -54,6 +51,9 @@ public class UserAccount {
         
         }
         public String getRole(){
+            if (this.profile == null){
+                return "admin";
+            }
             return profile.getRole();
         }
         
