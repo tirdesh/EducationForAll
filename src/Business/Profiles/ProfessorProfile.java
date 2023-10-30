@@ -13,8 +13,7 @@ import java.util.ArrayList;
 
 public class ProfessorProfile extends Profile {
     private ArrayList<Course> courseList;
-    private RatingSystem ratingSystem;
-
+private RatingSystem ratingSystem;
     public ProfessorProfile(Person p) {
         super(p);
         courseList = new ArrayList<>();
@@ -29,7 +28,6 @@ public class ProfessorProfile extends Profile {
     public RatingSystem getRatingSystem() {
         return ratingSystem;
     }
-
     public ArrayList<Course> getCourseList() {
         return courseList;
     }
@@ -41,7 +39,6 @@ public class ProfessorProfile extends Profile {
     public void removeCourseFromProfile(Course course) {
         courseList.remove(course);
     }
-    
     public Course findCourse(String courseName) {
         for (Course course : courseList) {
             if (course.getCourseName().equals(courseName)) {
@@ -50,5 +47,4 @@ public class ProfessorProfile extends Profile {
         }
         return null; // Not found after going through the whole list
     }
-        
 }
