@@ -70,6 +70,19 @@ public class UserAccountDirectory {
          return useraccountlist;
      }
      
+    public UserAccount getUserAccount(String username){
+         UserAccount us = null;
+         for (UserAccount ua: useraccountlist){
+             if(ua.getUserLoginName().equalsIgnoreCase(username)){
+                 us=ua;
+             }
+             System.out.println(username);
+
+         }
+         return us;
+     }
+     
+     
      private boolean isUsernameTaken(String username) {
         for (UserAccount ua : useraccountlist) {
             if (ua.getUserLoginName().equalsIgnoreCase(username)) {

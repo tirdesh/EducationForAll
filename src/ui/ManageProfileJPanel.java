@@ -7,11 +7,13 @@ package ui;
 import Business.Business;
 import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
+import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
 import Business.UserAccounts.UserAccount;
 import UserInterface.WorkAreas.EmployerRole.EmployerWorkAreaJPanel;
 import UserInterface.WorkAreas.ProfessorRole.ProfessorWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ManageProfileJPanel extends javax.swing.JPanel {
@@ -22,6 +24,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
     StudentProfile spp;
     ProfessorProfile pp;
     EmployerProfile ep;
+    Profile x;
     Business business;
     UserAccount actualuser;
     JPanel CardSequencePanel;
@@ -30,6 +33,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         this.CardSequencePanel=CardSequencePanel;
         this.business=business;
         this.spp=spp;
+        this.x = spp;
         actualuser=business.getUserAccountDirectory().getActualuser();
         txtFirstName.setText(actualuser.getAssociatedPersonProfile().getPerson().getFirst_name());
         txtLastName.setText(actualuser.getAssociatedPersonProfile().getPerson().getLast_name());
@@ -42,6 +46,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         this.CardSequencePanel=CardSequencePanel;
         this.business=business;
         this.pp=pp;
+        this.x=pp;
         actualuser=business.getUserAccountDirectory().getActualuser();
         txtFirstName.setText(actualuser.getAssociatedPersonProfile().getPerson().getFirst_name());
         txtLastName.setText(actualuser.getAssociatedPersonProfile().getPerson().getLast_name());
@@ -54,6 +59,7 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         this.CardSequencePanel=CardSequencePanel;
         this.business=business;
         this.ep=ep;
+        this.x=ep;
         actualuser=business.getUserAccountDirectory().getActualuser();
         lblFirstName.setText("Company");
         lblLastName.setText("Industry");
@@ -85,6 +91,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         lblLastName = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jPasswordField1.setText("defaultvalue");
 
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +143,13 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,17 +172,22 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
                                     .addComponent(lblLastName)
                                     .addComponent(lblFirstName)
                                     .addComponent(lblPassword))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(207, 207, 207)
+                        .addComponent(jButton1)))
                 .addContainerGap(470, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -193,7 +214,9 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
                     .addComponent(lblPassword)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnBack)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogOut)
                 .addContainerGap(620, Short.MAX_VALUE))
@@ -247,10 +270,28 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        x.getPerson().setFirst_name(txtFirstName.getText());
+        x.getPerson().setLast_name(txtLastName.getText());
+        x.getPerson().setEmail(txtEmail.getText());
+        UserAccount u = business.getUserAccountDirectory().getUserAccount(txtUserName.getText());
+        char[] passwordChars = jPasswordField1.getPassword();
+        String password = new String(passwordChars);
+        if (password.equals("defaultvalue")) {
+
+        } else {
+            u.setPassword(password);
+                }
+        System.out.println(password);
+        JOptionPane.showMessageDialog(this, "Update successfull");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFirstName;
