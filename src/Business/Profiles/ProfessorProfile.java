@@ -50,8 +50,5 @@ public class ProfessorProfile extends Profile {
         }
         return null; // Not found after going through the whole list
     }
-    
-    
-    
-    
+        
 }
