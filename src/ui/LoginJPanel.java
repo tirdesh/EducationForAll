@@ -11,9 +11,11 @@ import Business.Profiles.Profile;
 import Business.Profiles.StudentProfile;
 import Business.UserAccounts.UserAccount;
 import Business.UserAccounts.UserAccountDirectory;
+import UserInterface.WorkAreas.AdminRole.AdminDashboardJPanel;
 import UserInterface.WorkAreas.EmployerRole.EmployerWorkAreaJPanel;
 import UserInterface.WorkAreas.ProfessorRole.ProfessorWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class LoginJPanel extends javax.swing.JPanel {
@@ -160,9 +162,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                 CardSequencePanel.add("employer", employerWorkAreaJPanel);
                 ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
                 // Handle other roles or scenarios
+            } else if(role.equals("admin")){
+                AdminDashboardJPanel panel = new AdminDashboardJPanel(business, CardSequencePanel);
+                CardSequencePanel.removeAll();
+                CardSequencePanel.add("AdminDashboardJPanel", panel);
+                ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
             }
         } else {
             // Authentication failed, handle it as needed (e.g., show an error message)
+            JOptionPane.showMessageDialog(this, "Invalid Credentials!!!");
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed

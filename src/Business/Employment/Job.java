@@ -9,7 +9,6 @@ import Business.CourseWork.TechStack;
 import Business.Profiles.EmployerProfile;
 import java.util.ArrayList;
 
-
 public class Job {
     private int jobId;
     private String title;
