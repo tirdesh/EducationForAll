@@ -36,6 +36,9 @@ private RatingSystem ratingSystem;
         courseList.add(course);
     }
 
+    
+    
+    
     public void removeCourseFromProfile(Course course) {
         courseList.remove(course);
     }
