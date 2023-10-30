@@ -32,10 +32,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
 
-/**
- *
- * @author tirdesh
- */
 public class AddCourseJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;

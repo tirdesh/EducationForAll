@@ -4,10 +4,6 @@
  */
 package Business.CourseWork;
 
-/**
- *
- * @author tirdesh
- */
 
 import java.util.List;
 

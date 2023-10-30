@@ -11,10 +11,7 @@ import Business.Profiles.StudentProfile;
 // import Business.Profiles.EmployeeProfile;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class RatingSystem {
     private List<Double> studentRatings;
     private List<Double> employerRatings;

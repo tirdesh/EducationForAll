@@ -4,10 +4,6 @@
  */
 package Business.CourseScheduler;
 
-/**
- *
- * @author tirdesh
- */
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -9,10 +9,7 @@ import Business.Person.Person;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class StudentDirectory {
 
 

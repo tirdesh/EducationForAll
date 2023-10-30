@@ -18,10 +18,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author tirdesh
- */
+
 public class ProfessorStatAreaJPanel extends javax.swing.JPanel {
     javax.swing.JPanel CardSequencePanel;
     Business business;

@@ -4,10 +4,7 @@
  */
 package Business.Degree;
 
-/**
- *
- * @author abhisheksagar
- */
+
 public class Transcript {
     
 }

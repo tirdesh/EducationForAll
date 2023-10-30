@@ -7,10 +7,7 @@ package Business.Person;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class PersonDirectory {
     
       ArrayList<Person> personlist ;
@@ -36,8 +33,8 @@ public class PersonDirectory {
         // Check if the deleted person's ID is the highest so far
         if (deletedId == Person.getIdCounter()) {
             Person.decrementIdCounter();
+            }
         }
-    }
     }
 
     public Person findPerson(int id) {

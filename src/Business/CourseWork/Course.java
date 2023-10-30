@@ -13,11 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents a course in an academic program.
- * 
- * @author tirdesh
- */
+
 public class Course {
     private String courseName;
     private String description;
