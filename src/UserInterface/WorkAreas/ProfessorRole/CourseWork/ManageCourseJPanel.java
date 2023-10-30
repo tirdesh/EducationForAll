@@ -22,10 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.ListModel;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class ManageCourseJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;

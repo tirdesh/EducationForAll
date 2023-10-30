@@ -11,10 +11,7 @@ import java.util.ArrayList;
 
 
 
-/**
- *
- * @author kal bugrara
- */
+
 public class UserAccount {
     
     Profile profile;

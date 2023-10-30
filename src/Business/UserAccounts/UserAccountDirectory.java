@@ -9,10 +9,7 @@ import Business.Profiles.Profile;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class UserAccountDirectory {
     
       ArrayList<UserAccount> useraccountlist ;

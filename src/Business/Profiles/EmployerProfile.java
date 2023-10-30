@@ -4,10 +4,7 @@
  */
 package Business.Profiles;
 
-/**
- *
- * @author tirdesh
- */
+
 import Business.Employment.Job;
 import java.util.ArrayList;
 

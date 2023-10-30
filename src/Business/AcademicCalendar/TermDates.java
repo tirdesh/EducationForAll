@@ -6,10 +6,7 @@ package Business.AcademicCalendar;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author tirdesh
- */
+
 public class TermDates {
     private LocalDate startDate;
     private LocalDate endDate;

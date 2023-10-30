@@ -24,10 +24,7 @@ import java.util.Random;
 
 
 
-/**
- *
- * @author kal bugrara
- */
+
 class ConfigureABusiness {
 
     static Business initialize() {

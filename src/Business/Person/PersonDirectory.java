@@ -7,10 +7,7 @@ package Business.Person;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kal bugrara
- */
+
 public class PersonDirectory {
     
       ArrayList<Person> personlist ;

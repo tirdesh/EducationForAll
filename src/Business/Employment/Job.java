@@ -9,10 +9,7 @@ import Business.CourseWork.TechStack;
 import Business.Profiles.EmployerProfile;
 import java.util.ArrayList;
 
-/**
- *
- * @author tirdesh
- */
+
 public class Job {
     private int jobId;
     private String title;

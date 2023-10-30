@@ -18,10 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-/**
- *
- * @author tirdesh
- */
 public class LinkCourseAndJobJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;

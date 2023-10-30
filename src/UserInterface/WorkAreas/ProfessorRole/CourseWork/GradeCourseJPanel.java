@@ -17,10 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author tirdesh
- */
+
 public class GradeCourseJPanel extends javax.swing.JPanel {
 
     Business business;
