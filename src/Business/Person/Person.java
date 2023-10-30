@@ -5,10 +5,6 @@
  */
 package Business.Person;
 
-/**
- *
- * @author kal bugrara
- */
 public class Person {
 
     int id;

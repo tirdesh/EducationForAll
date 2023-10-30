@@ -2,10 +2,6 @@ package Business.CourseWork;
 
 import java.util.ArrayList;
 
-/**
- * 
- * @author tirdesh
- */
 public class CourseCatalog {
     
     private ArrayList<Course> courseList;

@@ -15,10 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class SignUpJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;
@@ -178,11 +175,12 @@ public class SignUpJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRole)
-                    .addComponent(jRadioButtonStudent)
-                    .addComponent(jRadioButtonProfessor)
-                    .addComponent(jRadioButtonEmployer))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRole, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRadioButtonStudent)
+                        .addComponent(jRadioButtonProfessor)
+                        .addComponent(jRadioButtonEmployer)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName)

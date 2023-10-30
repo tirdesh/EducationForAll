@@ -17,10 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-/**
- *
- * @author tirdesh
- */
+
 public class AddJobJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;

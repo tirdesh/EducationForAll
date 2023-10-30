@@ -16,10 +16,6 @@ import UserInterface.WorkAreas.ProfessorRole.ProfessorWorkAreaJPanel;
 import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author tirdesh
- */
 public class LoginJPanel extends javax.swing.JPanel {
     Business business;
     JPanel CardSequencePanel;

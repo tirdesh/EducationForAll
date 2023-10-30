@@ -16,10 +16,6 @@ import Business.Profiles.StudentDirectory;
 import Business.UserAccounts.UserAccountDirectory;
 import java.time.LocalDate;
 
-/**
- *
- * @author kal bugrara
- */
 public class Business {
 
     String name;

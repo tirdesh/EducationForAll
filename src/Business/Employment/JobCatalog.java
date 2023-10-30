@@ -3,10 +3,6 @@ package Business.Employment;
 import Business.Employment.*;
 import java.util.ArrayList;
 
-/**
- * 
- * @author tirdesh
- */
 public class JobCatalog {
     
     private ArrayList<Job> jobList;

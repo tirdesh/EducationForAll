@@ -18,10 +18,6 @@ import javax.swing.JPanel;
 import ui.LoginJPanel;
 import ui.ManageProfileJPanel;
 
-/**
- *
- * @author kal
- */
 public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
 
     javax.swing.JPanel CardSequencePanel;
