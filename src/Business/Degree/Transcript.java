@@ -6,5 +6,12 @@ package Business.Degree;
 
 
 public class Transcript {
+      private String transcript;
+    
+//    private ArrayList<Course> courseundertaken= new ArrayList<Course>();
+
+    public String getTranscript() {
+        return transcript;
+    }
     
 }
