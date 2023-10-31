@@ -429,7 +429,8 @@ class ConfigureABusiness {
 
             for (Course course : enrolledCourses) {
                 // Generate a random progress value (0 to 100) or use your own logic to set progress
-                int progress = (int) (Math.random() * 101); // Random progress value
+                Random random = new Random();
+                int progress = (int) (random.nextInt(101)); // Random progress value
 
                 // Set the course progress for the student
                 stu.updateCourseProgress(course, progress);
