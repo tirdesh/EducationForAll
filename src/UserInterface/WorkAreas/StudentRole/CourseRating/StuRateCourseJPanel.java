@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UserInterface.WorkAreas.EmployerRole.CourseRating;
+package UserInterface.WorkAreas.StudentRole.CourseRating;
 
+import UserInterface.WorkAreas.EmployerRole.CourseRating.*;
 import Business.Business;
 import Business.CourseWork.Course;
 import Business.Profiles.EmployerProfile;
 import Business.Profiles.ProfessorProfile;
-import UserInterface.WorkAreas.EmployerRole.EmployerWorkAreaJPanel;
+import Business.Profiles.StudentProfile;
+import UserInterface.WorkAreas.StudentRole.StudentWorkAreaJPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -18,18 +20,18 @@ import ui.LoginJPanel;
  *
  * @author abhisheksagar
  */
-public class RateCourseJPanel extends javax.swing.JPanel {
+public class StuRateCourseJPanel extends javax.swing.JPanel {
      int userRating = 0;
      Business business;
     JPanel CardSequencePanel;
-    EmployerProfile employer;
+    StudentProfile sp;
     /**
      * Creates new form RateCourseJPanel
      */
-    public RateCourseJPanel(Business business, JPanel CardSequencePanel, EmployerProfile employer) {
+    public StuRateCourseJPanel(Business business, JPanel CardSequencePanel, StudentProfile sp) {
         this.business=business;
         this.CardSequencePanel=CardSequencePanel;
-        this.employer=employer;
+        this.sp=sp;
         initComponents();
         jButton1.setText("★");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -74,8 +76,8 @@ public class RateCourseJPanel extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblcourse = new javax.swing.JTable();
-        btnLogOut = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -139,17 +141,17 @@ public class RateCourseJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblcourse);
 
-        btnLogOut.setText("Log Out");
-        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogOutActionPerformed(evt);
-            }
-        });
-
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        btnLogOut.setText("Log Out");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
             }
         });
 
@@ -167,21 +169,20 @@ public class RateCourseJPanel extends javax.swing.JPanel {
                                 .addGap(74, 74, 74)
                                 .addComponent(jButton1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5))
-                            .addComponent(jButton6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(313, 313, 313)
+                                .addComponent(jButton6)))
                         .addGap(0, 227, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -192,19 +193,19 @@ public class RateCourseJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addGap(55, 55, 55))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(btnBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnLogOut)))
@@ -255,9 +256,9 @@ Course co = null ;
 //                    }
 //                }
                 co=business.getCourseCatalog().findCourse(nameValue);
-                System.out.println(co.getRatingSystem().getAverageEmployerRating());
-                EmployerProfile employerProfile=(EmployerProfile) business.getUserAccountDirectory().getActualuser().getAssociatedPersonProfile();
-         co.getRatingSystem().addRating(userRating,employerProfile);
+                System.out.println(co.getRatingSystem().getAverageStudentRating());
+                StudentProfile spp=(StudentProfile) business.getUserAccountDirectory().getActualuser().getAssociatedPersonProfile();
+         co.getRatingSystem().addRating(userRating,spp);
              System.out.println(co.getRatingSystem().getAverageEmployerRating());
          populatetable();
          JOptionPane.showMessageDialog(this, "Rating Submited successfully");
@@ -286,6 +287,14 @@ Course co = null ;
    
     }//GEN-LAST:event_tblcourseMouseClicked
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        StudentWorkAreaJPanel panel = new StudentWorkAreaJPanel(business, sp, CardSequencePanel);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("sp", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
         LoginJPanel panel = new LoginJPanel(business, CardSequencePanel);
@@ -293,14 +302,6 @@ Course co = null ;
         CardSequencePanel.add("LoginJPanel", panel);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnLogOutActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        EmployerWorkAreaJPanel panel = new EmployerWorkAreaJPanel(business, employer, CardSequencePanel);
-        CardSequencePanel.removeAll();
-        CardSequencePanel.add("employer", panel);
-        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
-    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,7 +336,7 @@ Course co = null ;
 //                 temp=c.getCourseName()+",";
 //             }
              row[3]=c.getTerm();
-             row[4]=c.getRatingSystem().getAverageEmployerRating();
+             row[4]=c.getRatingSystem().getAverageStudentRating();
              model.addRow(row);
     }
     }
