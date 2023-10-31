@@ -12,6 +12,8 @@ package UserInterface.WorkAreas.EmployerRole;
 
 import Business.Business;
 import Business.Profiles.EmployerProfile;
+import UserInterface.WorkAreas.EmployerRole.CourseRating.RateCourseJPanel;
+import UserInterface.WorkAreas.EmployerRole.CourseRating.RateProfessorJPanel;
 import UserInterface.WorkAreas.EmployerRole.JobWork.AddJobJPanel;
 import UserInterface.WorkAreas.EmployerRole.JobWork.LinkCourseAndJobJPanel;
 import javax.swing.JPanel;
@@ -50,11 +52,9 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnMyProfile = new javax.swing.JButton();
-        btnManageJob = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         btnAddJob = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
         btnLinkCourseAndJob = new javax.swing.JButton();
         btnRateCourse = new javax.swing.JButton();
         btnRateProfessor = new javax.swing.JButton();
@@ -72,20 +72,6 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
         btnMyProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyProfileIdentifyResourceAssetsActionPerformed(evt);
-            }
-        });
-
-        btnManageJob.setBackground(new java.awt.Color(102, 153, 255));
-        btnManageJob.setFont(getFont());
-        btnManageJob.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageJob.setText("Manage Job");
-        btnManageJob.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnManageJob.setMaximumSize(new java.awt.Dimension(200, 40));
-        btnManageJob.setMinimumSize(new java.awt.Dimension(20, 20));
-        btnManageJob.setPreferredSize(new java.awt.Dimension(240, 25));
-        btnManageJob.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageJobActionPerformed(evt);
             }
         });
 
@@ -119,20 +105,6 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Dashboard");
-
-        jButton11.setBackground(new java.awt.Color(102, 153, 255));
-        jButton11.setFont(getFont());
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("My Stats");
-        jButton11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton11.setMaximumSize(new java.awt.Dimension(200, 40));
-        jButton11.setMinimumSize(new java.awt.Dimension(20, 20));
-        jButton11.setPreferredSize(new java.awt.Dimension(240, 25));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
 
         btnLinkCourseAndJob.setBackground(new java.awt.Color(102, 153, 255));
         btnLinkCourseAndJob.setFont(getFont());
@@ -191,14 +163,11 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(btnRateCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                    .addComponent(btnMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(btnMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(117, 117, 117)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnAddJob, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                .addComponent(btnManageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                 .addComponent(btnLinkCourseAndJob, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))))
                 .addContainerGap(590, Short.MAX_VALUE))
         );
@@ -213,17 +182,13 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnAddJob, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnManageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRateProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRateCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLinkCourseAndJob, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,10 +200,6 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
         CardSequencePanel.add("ManageProfileJPanel", panel);
         ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnMyProfileIdentifyResourceAssetsActionPerformed
-
-    private void btnManageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageJobActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_btnManageJobActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
@@ -257,10 +218,6 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
 
 }//GEN-LAST:event_btnAddJobActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
     private void btnLinkCourseAndJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinkCourseAndJobActionPerformed
         // TODO add your handling code here:
         LinkCourseAndJobJPanel panel = new LinkCourseAndJobJPanel(business, employer, CardSequencePanel);
@@ -271,22 +228,28 @@ public class EmployerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnRateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRateCourseActionPerformed
         // TODO add your handling code here:
+        RateCourseJPanel panel = new RateCourseJPanel(business,CardSequencePanel, employer );
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("RateCourseJPanel", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnRateCourseActionPerformed
 
     private void btnRateProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRateProfessorActionPerformed
         // TODO add your handling code here:
+        RateProfessorJPanel panel = new RateProfessorJPanel(business,CardSequencePanel,employer);
+        CardSequencePanel.removeAll();
+        CardSequencePanel.add("RateProfessorJPanel", panel);
+        ((java.awt.CardLayout) CardSequencePanel.getLayout()).next(CardSequencePanel);
     }//GEN-LAST:event_btnRateProfessorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddJob;
     private javax.swing.JButton btnLinkCourseAndJob;
-    private javax.swing.JButton btnManageJob;
     private javax.swing.JButton btnMyProfile;
     private javax.swing.JButton btnRateCourse;
     private javax.swing.JButton btnRateProfessor;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 

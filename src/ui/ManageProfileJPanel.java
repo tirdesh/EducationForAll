@@ -278,11 +278,16 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
         UserAccount u = business.getUserAccountDirectory().getUserAccount(txtUserName.getText());
         char[] passwordChars = jPasswordField1.getPassword();
         String password = new String(passwordChars);
+        if (!validatePassword(password)) {
+          JOptionPane.showMessageDialog(this, "Invalid password, Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.");
+        }
+        else{
         if (password.equals("defaultvalue")) {
 
         } else {
             u.setPassword(password);
                 }
+        }
         System.out.println(password);
         JOptionPane.showMessageDialog(this, "Update successfull");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -303,4 +308,8 @@ public class ManageProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+    private boolean validatePassword(String password) {
+    // Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.
+    return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
+    }
 }
