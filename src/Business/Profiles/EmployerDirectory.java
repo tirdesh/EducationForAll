@@ -50,6 +50,17 @@ public class EmployerDirectory {
             return null; //not found after going through the whole list
     }
     
+    public EmployerProfile findEmployer(String name) {
+
+        for (EmployerProfile sp : employerlist) {
+
+            if (name.equals(sp.getCompanyName())) {
+                return sp;
+            }
+        }
+            return null; //not found after going through the whole list
+         }
+    
     public EmployerProfile findEmployerWithMostJobs() {
         EmployerProfile employerWithMostJobs = null;
         int maxJobCount = 0;
