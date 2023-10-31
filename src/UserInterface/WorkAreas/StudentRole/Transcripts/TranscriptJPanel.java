@@ -114,24 +114,27 @@ StudentProfile spp;
         try{
         if(courses.get(0)!=null){
             lblcourse1.setText(courses.get(0).getCourseName());
-//            index=1;
-            int e;
-            System.out.println(courses.get(0).getCourseprogress());
-            if(courses.get(0).getCourseprogress().equals("Completed")){
+            String courseName = courses.get(0).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int e = courseProgress;
+            if(courseProgress == 100){
                 jButton1.setVisible(true);
             }
-            switch (courses.get(0).getCourseprogress()) {
-                
-                case "In Progress":
-                    e=50;
-                    break;
-                case "Completed":
-                    e=100;
-                    break;
-                default:
-                    e=25;
-                    break;
-            }
+//            switch (courses.get(0).getCourseprogress()) {
+//                
+//                case "In Progress":
+//                    e=50;
+//                    break;
+//                case "Completed":
+//                    e=100;
+//                    break;
+//                default:
+//                    e=25;
+//                    break;
+//            }
             Thread t = new Thread(new Runnable(){
             @Override
             
@@ -185,20 +188,28 @@ StudentProfile spp;
 //        t.start();
         if(courses.get(1)!=null){
             lblcourse2.setText(courses.get(1).getCourseName());
-//            index=2;
-            int f;
-            System.out.println(courses.get(1).getCourseprogress());
-            if(courses.get(1).getCourseprogress().equalsIgnoreCase("In Progress")){
-                f=50;
-            }
-            else if(courses.get(1).getCourseprogress().equalsIgnoreCase("Completed")){
-                f=100;
-                jButton2.setVisible(true);
+            String courseName = courses.get(1).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
 
+//          index=1;
+            int f = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
-            else{
-                f=25;
-            }
+//            index=2;
+//            System.out.println(courses.get(1).getCourseprogress());
+//            if(courses.get(1).getCourseprogress().equalsIgnoreCase("In Progress")){
+//                f=50;
+//            }
+//            else if(courses.get(1).getCourseprogress().equalsIgnoreCase("Completed")){
+//                f=100;
+//                jButton2.setVisible(true);
+//
+//            }
+//            else{
+//                f=25;
+//            }
             Thread t = new Thread(new Runnable(){
             @Override
             
@@ -245,19 +256,14 @@ StudentProfile spp;
         try{
         if(courses.get(2)!=null){
             lblcourse3.setText(courses.get(2).getCourseName());
-//            index=3;
-            int h;
-            
-            System.out.println(courses.get(2).getCourseprogress());
-            if(courses.get(2).getCourseprogress().equalsIgnoreCase("In Progress")){
-                h=50;
-            }
-            else if(courses.get(2).getCourseprogress().equalsIgnoreCase("Completed")){
-                h=100;
-                jButton3.setVisible(true);
-            }
-            else{
-                h=25;
+            String courseName = courses.get(2).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int h = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
             Thread t = new Thread(new Runnable(){
             @Override
@@ -299,17 +305,14 @@ StudentProfile spp;
         try{
         if(courses.get(3)!=null){
             lblcourse4.setText(courses.get(3).getCourseName());
-//            index=4;
-            int z;
-            if(courses.get(3).getCourseprogress().equalsIgnoreCase("In Progress")){
-                z=50;
-            }
-            else if(courses.get(3).getCourseprogress().equalsIgnoreCase("Completed")){
-                z=100;
-                jButton4.setVisible(true);
-            }
-            else{
-                z=25;
+            String courseName = courses.get(4).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int z = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
             Thread t = new Thread(new Runnable(){
             @Override
@@ -349,17 +352,14 @@ StudentProfile spp;
         try{
         if(courses.get(4)!=null){
             lblcourse5.setText(courses.get(4).getCourseName());
-//            index=5;
-            int d;
-            if(courses.get(4).getCourseprogress().equalsIgnoreCase("In Progress")){
-                d=50;
-            }
-            else if(courses.get(4).getCourseprogress().equalsIgnoreCase("Completed")){
-                d=100;
-                jButton5.setVisible(true);
-            }
-            else{
-                d=25;
+            String courseName = courses.get(4).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int d = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
             Thread t = new Thread(new Runnable(){
             @Override
@@ -398,17 +398,14 @@ StudentProfile spp;
 
         if(courses.get(5)!=null){
             lblcourse6.setText(courses.get(5).getCourseName());
-//            index=6;
-           int c;
-            if(courses.get(5).getCourseprogress().equalsIgnoreCase("In Progress")){
-                c=50;
-            }
-            else if(courses.get(5).getCourseprogress().equalsIgnoreCase("Completed")){
-                c=100;
-                jButton6.setVisible(true);
-            }
-            else{
-                c=25;
+            String courseName = courses.get(5).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int c = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
              Thread t = new Thread(new Runnable(){
             @Override
@@ -444,17 +441,14 @@ StudentProfile spp;
         try{
         if(courses.get(6)!=null){
             lblcourse7.setText(courses.get(6).getCourseName());
-//            index=7;
-            int b;
-            if(courses.get(6).getCourseprogress().equalsIgnoreCase("In Progress")){
-                b=50;
-            }
-            else if(courses.get(6).getCourseprogress().equalsIgnoreCase("Completed")){
-                b=100;
-                jButton7.setVisible(true);
-            }
-            else{
-                b=25;
+            String courseName = courses.get(6).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int b = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
             Thread t = new Thread(new Runnable(){
             @Override
@@ -488,17 +482,14 @@ StudentProfile spp;
         try{
         if(courses.get(7)!=null){
             lblcourse8.setText(courses.get(7).getCourseName());
-//            index=8;
-            int a;
-            if(courses.get(7).getCourseprogress().equalsIgnoreCase("In Progress")){
-                a=50;
-            }
-            else if(courses.get(7).getCourseprogress().equalsIgnoreCase("Completed")){
-                a=100;
-                jButton8.setVisible(true);
-            }
-            else{
-                a=25;
+            String courseName = courses.get(7).getCourseName();
+            int courseProgress;
+            courseProgress = spp.getCourseProgress(business.getCourseCatalog().findCourse(courseName));
+
+//          index=1;
+            int a = courseProgress;
+            if(courseProgress == 100){
+                jButton1.setVisible(true);
             }
             Thread t = new Thread(new Runnable(){
             @Override
