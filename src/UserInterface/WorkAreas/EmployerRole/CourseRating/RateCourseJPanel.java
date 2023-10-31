@@ -5,8 +5,12 @@
 package UserInterface.WorkAreas.EmployerRole.CourseRating;
 
 import Business.Business;
+import Business.CourseWork.Course;
 import Business.Profiles.EmployerProfile;
+import Business.Profiles.ProfessorProfile;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,7 +44,14 @@ public class RateCourseJPanel extends javax.swing.JPanel {
         jButton5.setText("★");
         jButton5.addActionListener(this::jButton5ActionPerformed);
         
-        
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
+        jButton5.setVisible(false);
+        jLabel6.setVisible(false);
+        jButton6.setVisible(false);
+        populatetable();
     }
 
     /**
@@ -52,11 +63,6 @@ public class RateCourseJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -64,16 +70,8 @@ public class RateCourseJPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel1");
-
-        jLabel3.setText("jLabel1");
-
-        jLabel4.setText("jLabel1");
-
-        jLabel5.setText("jLabel1");
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblcourse = new javax.swing.JTable();
 
         jLabel6.setText("jLabel6");
 
@@ -119,6 +117,24 @@ public class RateCourseJPanel extends javax.swing.JPanel {
             }
         });
 
+        tblcourse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Course Name", "Course Discription", "Session Type", "Term", "Rating"
+            }
+        ));
+        tblcourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblcourseMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblcourse);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,45 +142,33 @@ public class RateCourseJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jLabel6)
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jButton6)))
-                .addContainerGap(182, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(189, 189, 189)
+                                .addComponent(jLabel6)
+                                .addGap(74, 74, 74)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(250, 250, 250)
+                                .addComponent(jButton6)))
+                        .addGap(0, 227, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel3)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel5)
-                .addGap(84, 84, 84)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +211,50 @@ public class RateCourseJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 //         ratingLabel.setText("You rated the course " + userRating + " stars.");
 //         business.
+Course co = null ;
+         int selectedRowIndex=tblcourse.getSelectedRow();
+         if (selectedRowIndex != -1) {
+          DefaultTableModel model = (DefaultTableModel) tblcourse.getModel();
+                int nameColumn = 0; // Adjust this column index based on your table
+                String nameValue = model.getValueAt(selectedRowIndex, nameColumn).toString();
+                // Now, iterate through the registered students of the selected course
+//                for (Course p : business.getProfessorDirectory().getProfessorlist()) {
+//                    if (Integer.parseInt(IDValue) == p.getPerson().getPersonId()) {
+//                        pro=p;
+//                        break;
+//                    }
+//                }
+                co=business.getCourseCatalog().findCourse(nameValue);
+                System.out.println(co.getRatingSystem().getAverageEmployerRating());
+                EmployerProfile employerProfile=(EmployerProfile) business.getUserAccountDirectory().getActualuser().getAssociatedPersonProfile();
+         co.getRatingSystem().addRating(userRating,employerProfile);
+             System.out.println(co.getRatingSystem().getAverageEmployerRating());
+         populatetable();
+         JOptionPane.showMessageDialog(this, "Rating Submited successfully");
+         }
+         else{
+             JOptionPane.showMessageDialog(this, "Please select the row");
+         }
+         
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void tblcourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblcourseMouseClicked
+        // TODO add your handling code here:
+         int selectedRowIndex=tblcourse.getSelectedRow();
+         DefaultTableModel model= (DefaultTableModel) tblcourse.getModel();
+//        System.out.println(model.getValueAt(ERROR, WIDTH));
+//        int a= model.getValueAt(selectedRowIndex,0);
+        String selectedVitals=  model.getValueAt(selectedRowIndex,0).toString();
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton3.setVisible(true);
+        jButton4.setVisible(true);
+        jButton5.setVisible(true);
+        jLabel6.setVisible(true);
+        jButton6.setVisible(true);
+        jLabel6.setText("Give your Rating for "+selectedVitals);
+   
+    }//GEN-LAST:event_tblcourseMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -217,11 +264,31 @@ public class RateCourseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblcourse;
     // End of variables declaration//GEN-END:variables
+
+    private void populatetable() {
+    DefaultTableModel model = (DefaultTableModel) tblcourse.getModel();
+        
+    model.setRowCount(0); 
+    
+     for(Course c :business.getCourseCatalog().getCourseList()){
+//             String temp = null;
+             Object[] row =new Object[6];
+             row[0]=c.getCourseName();
+             row[1]=c.getDescription();
+             row[2]=c.getSessionType();
+//             row[2]=u.getPrerequisites();
+//             row[3]=u.getCourseHours();
+//             row[3]=c.ge().getPerson().getFirst_name();
+//             for(Course c: u.getCourseList()){
+//                 temp=c.getCourseName()+",";
+//             }
+             row[3]=c.getTerm();
+             row[4]=c.getRatingSystem().getAverageEmployerRating();
+             model.addRow(row);
+    }
+    }
 }
